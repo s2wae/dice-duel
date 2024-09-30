@@ -18,8 +18,7 @@ func _process(delta):
 
 
 func _on_button_pressed():
-	var parent = get_parent
-	parent.modulate.a = 0
+	$CanvasLayer/GridContainer/TextureRect.modulate.a = 0
 	$CanvasLayer/GridContainer/TextureRect/Button.visible = false
 	print("hello")
 	
