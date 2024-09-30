@@ -1,12 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://brr5wgubxutsl"]
+[gd_scene load_steps=2 format=3 uid="uid://cnvjcs0sy28lo"]
 
-[ext_resource type="Texture2D" uid="uid://b8vbrixxil81x" path="res://icon.svg" id="1_r7vux"]
+[ext_resource type="Texture2D" uid="uid://cumqwmvv7hymh" path="res://placeholders/Teemo.png" id="1_bgabw"]
 
-[node name="Icon" type="Sprite2D"]
-position = Vector2(523, 286)
-scale = Vector2(2.10938, 2.25)
-texture = ExtResource("1_r7vux")
+[node name="shop" type="Node2D"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(179.2, 48.8889)
-texture = ExtResource("1_r7vux")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.765
+anchor_right = 0.944
+anchor_bottom = 0.951
+offset_left = -0.512001
+offset_top = 0.279968
+offset_right = 0.511963
+offset_bottom = -0.248047
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_bgabw")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_bgabw")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_bgabw")
