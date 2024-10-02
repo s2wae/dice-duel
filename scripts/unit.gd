@@ -11,3 +11,7 @@ func _process(delta):
 #testing purposes
 func _on_area_2d_mouse_entered():
 	print("HELLO!")
+
+
+func _on_area_2d_mouse_exited():
+	queue_free()

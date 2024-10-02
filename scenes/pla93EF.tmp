@@ -102,6 +102,13 @@ offset_bottom = 0.0399933
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="sell" type="Button" parent="shopUI"]
+offset_left = 1000.0
+offset_top = 540.0
+offset_right = 1080.0
+offset_bottom = 572.0
+text = "SELL"
+
 [node name="RerollButton" type="Button" parent="shopUI"]
 texture_filter = 1
 anchors_preset = 15
@@ -185,4 +192,5 @@ layout_mode = 2
 [connection signal="pressed" from="shopUI/GridContainer/shopslot3/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="shopUI/GridContainer/shopslot4/Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="shopUI/GridContainer/shopslot5/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="shopUI/sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="shopUI/RerollButton" to="." method="_on_reroll_button_pressed"]

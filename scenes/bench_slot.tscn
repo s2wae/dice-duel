@@ -9,6 +9,7 @@ size = Vector2(112, 112)
 custom_minimum_size = Vector2(110, 110)
 offset_right = 110.0
 offset_bottom = 110.0
+mouse_filter = 2
 color = Color(1, 1, 1, 0.572549)
 script = ExtResource("1_s0jo7")
 
