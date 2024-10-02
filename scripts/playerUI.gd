@@ -84,6 +84,7 @@ func _on_button_1_pressed():
 	if coins > 0 and benchCounter < 4:
 		var unit_instance = unit.instantiate()
 		add_child(unit_instance)
+		unit_instance.get_node("Sprite2D").texture = $shopUI/GridContainer/shopslot1.texture
 		
 		if bench_slot1.isBeingUsed == false:
 			unit_instance.position = bench_slot1.global_position
@@ -109,7 +110,7 @@ func _on_button_2_pressed():
 	if coins > 0 and benchCounter < 4:
 		var unit_instance = unit.instantiate()
 		add_child(unit_instance)
-		
+		unit_instance.get_node("Sprite2D").texture = $shopUI/GridContainer/shopslot2.texture
 		if bench_slot1.isBeingUsed == false:
 			unit_instance.position = bench_slot1.global_position
 			unit_instance.position += Vector2(55,55)
@@ -133,7 +134,7 @@ func _on_button_3_pressed():
 	if coins > 0 and benchCounter < 4:
 		var unit_instance = unit.instantiate()
 		add_child(unit_instance)
-		
+		unit_instance.get_node("Sprite2D").texture = $shopUI/GridContainer/shopslot3.texture
 		if bench_slot1.isBeingUsed == false:
 			unit_instance.position = bench_slot1.global_position
 			unit_instance.position += Vector2(55,55)
@@ -157,7 +158,7 @@ func _on_button_4_pressed():
 	if coins > 0 and benchCounter < 4:
 		var unit_instance = unit.instantiate()
 		add_child(unit_instance)
-		
+		unit_instance.get_node("Sprite2D").texture = $shopUI/GridContainer/shopslot4.texture
 		if bench_slot1.isBeingUsed == false:
 			unit_instance.position = bench_slot1.global_position
 			unit_instance.position += Vector2(55,55)
@@ -181,7 +182,7 @@ func _on_button_5_pressed():
 	if coins > 0 and benchCounter < 4:
 		var unit_instance = unit.instantiate()
 		add_child(unit_instance)
-		
+		unit_instance.get_node("Sprite2D").texture = $shopUI/GridContainer/shopslot5.texture
 		if bench_slot1.isBeingUsed == false:
 			unit_instance.position = bench_slot1.global_position
 			unit_instance.position += Vector2(55,55)

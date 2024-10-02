@@ -12,3 +12,15 @@ func _process(delta):
 
 func set_bgcolor(c):
 	color = c
+
+
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("isUnit"):
+		print("AREA OFF")
+		Global.beingUsed = true
+
+
+func _on_area_2d_area_exited(area):
+	if area.is_in_group("isUnit"):
+		print("AREA ON")
+		Global.beingUsed = false
