@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b68xwnk4mkwgh"]
+
+[ext_resource type="Script" path="res://scripts/board_slot.gd" id="1_vfqxq"]
+
+[node name="boardSlot" type="ColorRect"]
+custom_minimum_size = Vector2(150, 150)
+anchors_preset = -1
+anchor_right = 0.087
+anchor_bottom = 0.154
+offset_right = -100.224
+offset_bottom = -99.792
+color = Color(0.890196, 0.631373, 0.752941, 1)
+script = ExtResource("1_vfqxq")

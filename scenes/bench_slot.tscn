@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c605wpvjnlyc"]
+
+[ext_resource type="Script" path="res://scripts/bench_slot.gd" id="1_s0jo7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dw8r"]
+size = Vector2(112, 112)
+
+[node name="benchSlot" type="ColorRect"]
+custom_minimum_size = Vector2(110, 110)
+offset_right = 110.0
+offset_bottom = 110.0
+color = Color(1, 1, 1, 0.572549)
+script = ExtResource("1_s0jo7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(56, 56)
+shape = SubResource("RectangleShape2D_1dw8r")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

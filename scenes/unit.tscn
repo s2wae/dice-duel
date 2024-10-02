@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://mg1mfc1hxwh1"]
+
+[ext_resource type="Texture2D" uid="uid://c84ofqvwq5d2q" path="res://placeholders/Briar.png" id="1_2hxgw"]
+[ext_resource type="Script" path="res://scripts/unit.gd" id="1_73p68"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0arq3"]
+size = Vector2(120, 120)
+
+[node name="unit" type="Node2D" groups=["isUnit"]]
+script = ExtResource("1_73p68")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_2hxgw")
+
+[node name="Area2D" type="Area2D" parent="." groups=["isUnit"]]
+scale = Vector2(0.8, 0.8)
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-7.15256e-06, -7.15256e-06)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_0arq3")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

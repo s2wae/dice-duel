@@ -1,0 +1,228 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnvjcs0sy28lo"]
+
+[ext_resource type="Texture2D" uid="uid://cumqwmvv7hymh" path="res://placeholders/Teemo.png" id="1_6ocar"]
+[ext_resource type="Script" path="res://scripts/playerUI.gd" id="1_q5eaq"]
+[ext_resource type="PackedScene" uid="uid://b68xwnk4mkwgh" path="res://scenes/board_slot.tscn" id="3_4rusx"]
+[ext_resource type="PackedScene" uid="uid://c605wpvjnlyc" path="res://scenes/bench_slot.tscn" id="4_pkin6"]
+
+[node name="playerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_q5eaq")
+
+[node name="shopUI" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="GridContainer" type="GridContainer" parent="shopUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 656.0
+offset_top = 432.0
+offset_right = 168.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+theme_override_constants/h_separation = 16
+columns = 6
+
+[node name="shopslot1" type="TextureRect" parent="shopUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_6ocar")
+
+[node name="Button1" type="Button" parent="shopUI/GridContainer/shopslot1"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.983
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shopslot2" type="TextureRect" parent="shopUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_6ocar")
+
+[node name="Button2" type="Button" parent="shopUI/GridContainer/shopslot2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.983
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shopslot3" type="TextureRect" parent="shopUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_6ocar")
+
+[node name="Button3" type="Button" parent="shopUI/GridContainer/shopslot3"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.983
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shopslot4" type="TextureRect" parent="shopUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_6ocar")
+
+[node name="Button4" type="Button" parent="shopUI/GridContainer/shopslot4"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.983
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shopslot5" type="TextureRect" parent="shopUI/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_6ocar")
+
+[node name="Button5" type="Button" parent="shopUI/GridContainer/shopslot5"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.983
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="sell" type="Button" parent="shopUI"]
+offset_left = 1000.0
+offset_top = 540.0
+offset_right = 1080.0
+offset_bottom = 572.0
+text = "SELL"
+
+[node name="RerollButton" type="Button" parent="shopUI"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 784.0
+offset_top = 528.0
+offset_right = -216.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "REROLL"
+
+[node name="coins" type="Label" parent="shopUI"]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 83.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 60
+text = "Coins:"
+
+[node name="boardUI" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="bgColor" type="ColorRect" parent="boardUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.152941, 0.337255, 0.364706, 1)
+
+[node name="boardGrid" type="GridContainer" parent="boardUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 104.0
+offset_top = 88.0
+offset_right = -578.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="boardSlot" parent="boardUI/boardGrid" instance=ExtResource("3_4rusx")]
+layout_mode = 2
+
+[node name="boardSlot2" parent="boardUI/boardGrid" instance=ExtResource("3_4rusx")]
+layout_mode = 2
+
+[node name="boardSlot3" parent="boardUI/boardGrid" instance=ExtResource("3_4rusx")]
+layout_mode = 2
+
+[node name="boardSlot4" parent="boardUI/boardGrid" instance=ExtResource("3_4rusx")]
+layout_mode = 2
+
+[node name="boardSlot5" parent="boardUI/boardGrid" instance=ExtResource("3_4rusx")]
+layout_mode = 2
+
+[node name="boardSlot6" parent="boardUI/boardGrid" instance=ExtResource("3_4rusx")]
+layout_mode = 2
+
+[node name="boardSlot7" parent="boardUI/boardGrid" instance=ExtResource("3_4rusx")]
+layout_mode = 2
+
+[node name="boardSlot8" parent="boardUI/boardGrid" instance=ExtResource("3_4rusx")]
+layout_mode = 2
+
+[node name="boardSlot9" parent="boardUI/boardGrid" instance=ExtResource("3_4rusx")]
+layout_mode = 2
+
+[node name="benchGrid" type="GridContainer" parent="boardUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 624.0
+offset_top = 264.0
+offset_right = -58.0
+offset_bottom = -274.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="benchSlot" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="benchSlot2" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="benchSlot3" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="benchSlot4" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
+layout_mode = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="shopUI/GridContainer/shopslot1/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="shopUI/GridContainer/shopslot2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="shopUI/GridContainer/shopslot3/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="shopUI/GridContainer/shopslot4/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="shopUI/GridContainer/shopslot5/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="shopUI/sell" to="." method="_on_sell_pressed"]
+[connection signal="pressed" from="shopUI/RerollButton" to="." method="_on_reroll_button_pressed"]
