@@ -1,12 +1,15 @@
 extends ColorRect
 
+@export var boardDisabled = false
+var curState = Global.slotState.FREE
 var boardSlotId = -1
+var curOverlap
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	pass
 
@@ -16,11 +19,9 @@ func set_bgcolor(c):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("isUnit"):
-		print("AREA OFF")
-		Global.beingUsed = true
+		pass
 
 
 func _on_area_2d_area_exited(area):
 	if area.is_in_group("isUnit"):
-		print("AREA ON")
-		Global.beingUsed = false
+		pass

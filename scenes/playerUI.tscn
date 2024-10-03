@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnvjcs0sy28lo"]
+[gd_scene load_steps=5 format=3 uid="uid://cnvjcs0sy28lo"]
 
 [ext_resource type="Texture2D" uid="uid://cumqwmvv7hymh" path="res://placeholders/Teemo.png" id="1_6ocar"]
 [ext_resource type="Script" path="res://scripts/playerUI.gd" id="1_q5eaq"]
+[ext_resource type="PackedScene" uid="uid://b68xwnk4mkwgh" path="res://scenes/board_slot.tscn" id="3_02dck"]
 [ext_resource type="PackedScene" uid="uid://c605wpvjnlyc" path="res://scenes/bench_slot.tscn" id="4_pkin6"]
 
 [node name="playerUI" type="Control"]
@@ -152,6 +153,33 @@ mouse_filter = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
+
+[node name="boardSlot1" parent="boardUI/boardGrid" instance=ExtResource("3_02dck")]
+layout_mode = 2
+
+[node name="boardSlot2" parent="boardUI/boardGrid" instance=ExtResource("3_02dck")]
+layout_mode = 2
+
+[node name="boardSlot3" parent="boardUI/boardGrid" instance=ExtResource("3_02dck")]
+layout_mode = 2
+
+[node name="boardSlot4" parent="boardUI/boardGrid" instance=ExtResource("3_02dck")]
+layout_mode = 2
+
+[node name="boardSlot5" parent="boardUI/boardGrid" instance=ExtResource("3_02dck")]
+layout_mode = 2
+
+[node name="boardSlot6" parent="boardUI/boardGrid" instance=ExtResource("3_02dck")]
+layout_mode = 2
+
+[node name="boardSlot7" parent="boardUI/boardGrid" instance=ExtResource("3_02dck")]
+layout_mode = 2
+
+[node name="boardSlot8" parent="boardUI/boardGrid" instance=ExtResource("3_02dck")]
+layout_mode = 2
+
+[node name="boardSlot9" parent="boardUI/boardGrid" instance=ExtResource("3_02dck")]
+layout_mode = 2
 
 [node name="benchGrid" type="GridContainer" parent="boardUI"]
 anchors_preset = 15
