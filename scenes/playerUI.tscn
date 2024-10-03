@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnvjcs0sy28lo"]
+[gd_scene load_steps=6 format=3 uid="uid://cnvjcs0sy28lo"]
 
 [ext_resource type="Texture2D" uid="uid://cumqwmvv7hymh" path="res://placeholders/Teemo.png" id="1_6ocar"]
 [ext_resource type="Script" path="res://scripts/playerUI.gd" id="1_q5eaq"]
 [ext_resource type="PackedScene" uid="uid://b68xwnk4mkwgh" path="res://scenes/board_slot.tscn" id="3_02dck"]
+[ext_resource type="PackedScene" uid="uid://dvuyjt58vc752" path="res://scenes/sell_area.tscn" id="3_h627n"]
 [ext_resource type="PackedScene" uid="uid://c605wpvjnlyc" path="res://scenes/bench_slot.tscn" id="4_pkin6"]
 
 [node name="playerUI" type="Control"]
@@ -14,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_q5eaq")
+gold = 20
 
 [node name="shopUI" type="CanvasLayer" parent="."]
 layer = -1
@@ -23,9 +25,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 656.0
-offset_top = 432.0
+offset_top = 400.0
 offset_right = 168.0
-offset_bottom = -96.0
+offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6, 0.6)
@@ -103,20 +105,27 @@ offset_bottom = 0.0399933
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="sellArea" parent="shopUI" instance=ExtResource("3_h627n")]
+offset_left = 896.0
+offset_top = 496.0
+offset_right = 1024.0
+offset_bottom = 624.0
+
 [node name="RerollButton" type="Button" parent="shopUI"]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 784.0
-offset_top = 528.0
-offset_right = -216.0
-offset_bottom = -64.0
+offset_left = 696.0
+offset_top = 536.0
+offset_right = -304.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 30
 text = "REROLL"
 
-[node name="coins" type="Label" parent="shopUI"]
+[node name="gold" type="Label" parent="shopUI"]
 texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -129,15 +138,6 @@ text = "Coins:"
 
 [node name="boardUI" type="CanvasLayer" parent="."]
 layer = -2
-
-[node name="bgColor" type="ColorRect" parent="boardUI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.152941, 0.337255, 0.364706, 1)
 
 [node name="boardGrid" type="GridContainer" parent="boardUI"]
 anchors_preset = 15
@@ -207,6 +207,16 @@ layout_mode = 2
 
 [node name="benchSlot4" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
 layout_mode = 2
+
+[node name="bgColor" type="ColorRect" parent="boardUI"]
+offset_left = 624.0
+offset_top = 379.0
+offset_right = 734.0
+offset_bottom = 379.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.152941, 0.337255, 0.364706, 1)
 
 [connection signal="pressed" from="shopUI/GridContainer/shopslot1/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="shopUI/GridContainer/shopslot2/Button2" to="." method="_on_button_2_pressed"]

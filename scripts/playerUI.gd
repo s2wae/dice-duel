@@ -1,6 +1,7 @@
 extends Control
 
-@export var coins = 15
+
+@export var gold = Global.goldCount
 @onready var bench_grid = $boardUI/benchGrid
 @onready var bench_slot1= $boardUI/benchGrid/benchSlot1
 @onready var bench_slot2= $boardUI/benchGrid/benchSlot2
@@ -22,11 +23,7 @@ var array = [briar, gwen, milio, teemo, varus]
 var boardArray = []
 var benchArray = []
 
-var benchCounter = -10
-
 func _ready():
-	
-	$shopUI/coins.text = "Coins:" + str(coins)
 	$shopUI/GridContainer/shopslot1.texture = array.pick_random()
 	$shopUI/GridContainer/shopslot2.texture = array.pick_random()
 	$shopUI/GridContainer/shopslot3.texture = array.pick_random()
@@ -35,14 +32,25 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	gold = Global.goldCount
+	$shopUI/gold.text = "Gold:" + str(gold)
+	check_bench()
 
+
+func check_bench():
+	var tempSlot
+	var tempCount = 4
+	for i in range(0,4):
+		tempSlot = bench_grid.get_child(i)
+		if not tempSlot.get_node("Area2D").has_overlapping_areas():
+			tempCount -= 1
+	Global.benchCounter = tempCount
 
 func _on_reroll_button_pressed():
 	
-	if coins > 0:
-		coins -= 1
-		$shopUI/coins.text = "Coins:" + str(coins)
+	if gold > 0:
+		Global.goldCount -= 1
+		$shopUI/gold.text = "Gold:" + str(gold)
 		$shopUI/GridContainer/shopslot1/Button1.visible = true
 		$shopUI/GridContainer/shopslot2/Button2.visible = true
 		$shopUI/GridContainer/shopslot3/Button3.visible = true
@@ -63,7 +71,7 @@ func _on_reroll_button_pressed():
 
 
 func _on_button_1_pressed():
-	if coins > 0 and benchCounter < 4:
+	if gold > 0 and Global.benchCounter < 4:
 		var unit_instance = unit.instantiate()
 		add_child(unit_instance)
 		unit_instance.get_node("Sprite2D").texture = $shopUI/GridContainer/shopslot1.texture
@@ -72,15 +80,14 @@ func _on_button_1_pressed():
 			if curSlot.curState == Global.slotState.FREE:
 				unit_instance.position = curSlot.global_position
 				unit_instance.position += Vector2(55,55)
-		benchCounter += 1
 		$shopUI/GridContainer/shopslot1.modulate.a = 0
 		$shopUI/GridContainer/shopslot1/Button1.visible = false
-		coins -= 1
-		$shopUI/coins.text = "Coins:" + str(coins)
+		Global.goldCount -= 1
+		Global.benchCounter += 1
 
 
 func _on_button_2_pressed():
-	if coins > 0 and benchCounter < 4:
+	if gold > 0 and Global.benchCounter < 4:
 		var unit_instance = unit.instantiate()
 		add_child(unit_instance)
 		unit_instance.get_node("Sprite2D").texture = $shopUI/GridContainer/shopslot2.texture
@@ -89,14 +96,14 @@ func _on_button_2_pressed():
 			if curSlot.curState == Global.slotState.FREE:
 				unit_instance.position = curSlot.global_position
 				unit_instance.position += Vector2(55,55)
-		benchCounter += 1
 		$shopUI/GridContainer/shopslot2.modulate.a = 0
 		$shopUI/GridContainer/shopslot2/Button2.visible = false
-		coins -= 1
-		$shopUI/coins.text = "Coins:" + str(coins)
+		Global.goldCount -= 1
+		Global.benchCounter += 1
+
 
 func _on_button_3_pressed():
-	if coins > 0 and benchCounter < 4:
+	if gold > 0 and Global.benchCounter < 4:
 		var unit_instance = unit.instantiate()
 		add_child(unit_instance)
 		unit_instance.get_node("Sprite2D").texture = $shopUI/GridContainer/shopslot3.texture
@@ -105,14 +112,13 @@ func _on_button_3_pressed():
 			if curSlot.curState == Global.slotState.FREE:
 				unit_instance.position = curSlot.global_position
 				unit_instance.position += Vector2(55,55)
-		benchCounter += 1
 		$shopUI/GridContainer/shopslot3.modulate.a = 0
 		$shopUI/GridContainer/shopslot3/Button3.visible = false
-		coins -= 1
-		$shopUI/coins.text = "Coins:" + str(coins)
+		Global.goldCount -= 1
+		Global.benchCounter += 1
 
 func _on_button_4_pressed():
-	if coins > 0 and benchCounter < 4:
+	if gold > 0 and Global.benchCounter < 4:
 		var unit_instance = unit.instantiate()
 		add_child(unit_instance)
 		unit_instance.get_node("Sprite2D").texture = $shopUI/GridContainer/shopslot4.texture
@@ -121,14 +127,13 @@ func _on_button_4_pressed():
 			if curSlot.curState == Global.slotState.FREE:
 				unit_instance.position = curSlot.global_position
 				unit_instance.position += Vector2(55,55)
-		benchCounter += 1
 		$shopUI/GridContainer/shopslot4.modulate.a = 0
 		$shopUI/GridContainer/shopslot4/Button4.visible = false
-		coins -= 1
-		$shopUI/coins.text = "Coins:" + str(coins)
+		Global.goldCount -= 1
+		Global.benchCounter += 1
 
 func _on_button_5_pressed():
-	if coins > 0 and benchCounter < 4:
+	if gold > 0 and Global.benchCounter < 4:
 		var unit_instance = unit.instantiate()
 		add_child(unit_instance)
 		unit_instance.get_node("Sprite2D").texture = $shopUI/GridContainer/shopslot5.texture
@@ -137,9 +142,8 @@ func _on_button_5_pressed():
 			if curSlot.curState == Global.slotState.FREE:
 				unit_instance.position = curSlot.global_position
 				unit_instance.position += Vector2(55,55)
-		benchCounter += 1
 		$shopUI/GridContainer/shopslot5.modulate.a = 0
 		$shopUI/GridContainer/shopslot5/Button5.visible = false
-		coins -= 1
-		$shopUI/coins.text = "Coins:" + str(coins)
+		Global.goldCount -= 1
+		Global.benchCounter += 1
 

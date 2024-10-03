@@ -13,7 +13,7 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0.572549)
 script = ExtResource("1_s0jo7")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["bench"]]
 collision_layer = 15
 collision_mask = 15
 
@@ -25,3 +25,4 @@ shape = SubResource("RectangleShape2D_1dw8r")
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

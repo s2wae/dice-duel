@@ -4,6 +4,7 @@ extends Node2D
 
 var canDrag = false
 var isInDropArea = false
+var isInSellArea = false
 var curBoardSlot
 var initialPos
 var bodyRef
@@ -14,7 +15,7 @@ func _ready():
 
 
 func _process(delta):
-	
+	print(Global.benchCounter)
 	if canDrag:
 		if Input.is_action_just_pressed("lmb"):
 			initialPos = global_position
@@ -29,10 +30,13 @@ func _process(delta):
 				if Input.is_action_just_released('lmb'):
 					print("DISABLED")
 					curBoardSlot.curState = Global.slotState.USED
+			elif isInSellArea:
+				if Input.is_action_just_released('lmb'):
+					queue_free()
+					Global.goldCount += 1
 			else:
 				tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
 
- #and curBoardSlot.curState == Global.slotState.FREE
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group('droppable'):
@@ -40,6 +44,8 @@ func _on_area_2d_area_entered(area):
 		print(curBoardSlot.curState)
 		isInDropArea = true
 		bodyRef = area
+	if area.is_in_group('sell'):
+		isInSellArea = true
 
 
 func _on_area_2d_area_exited(area):
@@ -49,6 +55,10 @@ func _on_area_2d_area_exited(area):
 			print(curBoardSlot.curState)
 			print("OUT DROP AREA")
 			isInDropArea = false
+	if area.is_in_group('sell'):
+		isInSellArea = false
+
+
 
 
 func _on_area_2d_mouse_entered():

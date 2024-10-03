@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvuyjt58vc752"]
+
+[ext_resource type="Script" path="res://scripts/sell_area.gd" id="1_g3h8x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pq85r"]
+size = Vector2(128, 128)
+
+[node name="sellArea" type="ColorRect"]
+offset_right = 128.0
+offset_bottom = 128.0
+color = Color(0.85098, 0.454902, 0.521569, 1)
+script = ExtResource("1_g3h8x")
+
+[node name="Area2D" type="Area2D" parent="." groups=["sell"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(64, 64)
+shape = SubResource("RectangleShape2D_pq85r")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 98.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 30
+text = "SELL"
