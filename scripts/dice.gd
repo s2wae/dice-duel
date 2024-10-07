@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var boardSlot = preload("res://scenes/board_slot.tscn")
+
+@onready var diceSlot = preload("res://scenes/dice_slot.tscn")
 
 var canDrag = false
 var isInDropArea = false
@@ -11,7 +12,7 @@ var bodyRef
 
 
 func _ready():
-	pass
+	pass # Replace with function body.
 
 
 func _process(delta):
@@ -38,26 +39,8 @@ func _process(delta):
 
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group('droppable'):
-		curBoardSlot = area.get_node("..")
-		print(curBoardSlot.curState)
-		isInDropArea = true
-		bodyRef = area
 	if area.is_in_group('sell'):
 		isInSellArea = true
-
-
-func _on_area_2d_area_exited(area):
-	if(!area.has_overlapping_areas()):
-		if area.is_in_group('droppable'):
-			curBoardSlot.curState = Global.slotState.FREE
-			print(curBoardSlot.curState)
-			print("OUT DROP AREA")
-			isInDropArea = false
-	if area.is_in_group('sell'):
-		isInSellArea = false
-
-
 
 
 func _on_area_2d_mouse_entered():

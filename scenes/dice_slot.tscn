@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://l75k17vh6121"]
+
+[ext_resource type="Script" path="res://scripts/dice_slot.gd" id="1_8ww41"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41ule"]
+size = Vector2(110, 110)
+
+[node name="diceSlot" type="ColorRect"]
+custom_minimum_size = Vector2(110, 110)
+offset_right = 110.0
+offset_bottom = 110.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.572549)
+script = ExtResource("1_8ww41")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(55, 55)
+shape = SubResource("RectangleShape2D_41ule")

@@ -8,6 +8,7 @@ enum mouseState{
 	DOWN, RELEASED
 }
 
+var dCounter = 0
 var benchCounter = 0
 var goldCount = 20
 var isDragging = false

@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnvjcs0sy28lo"]
+[gd_scene load_steps=8 format=3 uid="uid://cnvjcs0sy28lo"]
 
 [ext_resource type="Texture2D" uid="uid://cumqwmvv7hymh" path="res://placeholders/Teemo.png" id="1_6ocar"]
 [ext_resource type="Script" path="res://scripts/playerUI.gd" id="1_q5eaq"]
 [ext_resource type="PackedScene" uid="uid://b68xwnk4mkwgh" path="res://scenes/board_slot.tscn" id="3_02dck"]
+[ext_resource type="Texture2D" uid="uid://b7paafcb3cne2" path="res://placeholders/1_dot.png" id="3_ey28k"]
 [ext_resource type="PackedScene" uid="uid://dvuyjt58vc752" path="res://scenes/sell_area.tscn" id="3_h627n"]
 [ext_resource type="PackedScene" uid="uid://c605wpvjnlyc" path="res://scenes/bench_slot.tscn" id="4_pkin6"]
+[ext_resource type="PackedScene" uid="uid://l75k17vh6121" path="res://scenes/dice_slot.tscn" id="7_6eo1k"]
 
 [node name="playerUI" type="Control"]
 layout_mode = 3
@@ -20,7 +22,7 @@ gold = 20
 [node name="shopUI" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="GridContainer" type="GridContainer" parent="shopUI"]
+[node name="unitShop" type="GridContainer" parent="shopUI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -35,11 +37,11 @@ mouse_filter = 2
 theme_override_constants/h_separation = 16
 columns = 6
 
-[node name="shopslot1" type="TextureRect" parent="shopUI/GridContainer"]
+[node name="shopslot1" type="TextureRect" parent="shopUI/unitShop"]
 layout_mode = 2
 texture = ExtResource("1_6ocar")
 
-[node name="Button1" type="Button" parent="shopUI/GridContainer/shopslot1"]
+[node name="Button1" type="Button" parent="shopUI/unitShop/shopslot1"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -49,11 +51,11 @@ offset_bottom = 0.0399933
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="shopslot2" type="TextureRect" parent="shopUI/GridContainer"]
+[node name="shopslot2" type="TextureRect" parent="shopUI/unitShop"]
 layout_mode = 2
 texture = ExtResource("1_6ocar")
 
-[node name="Button2" type="Button" parent="shopUI/GridContainer/shopslot2"]
+[node name="Button2" type="Button" parent="shopUI/unitShop/shopslot2"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -63,11 +65,11 @@ offset_bottom = 0.0399933
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="shopslot3" type="TextureRect" parent="shopUI/GridContainer"]
+[node name="shopslot3" type="TextureRect" parent="shopUI/unitShop"]
 layout_mode = 2
 texture = ExtResource("1_6ocar")
 
-[node name="Button3" type="Button" parent="shopUI/GridContainer/shopslot3"]
+[node name="Button3" type="Button" parent="shopUI/unitShop/shopslot3"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -77,11 +79,11 @@ offset_bottom = 0.0399933
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="shopslot4" type="TextureRect" parent="shopUI/GridContainer"]
+[node name="shopslot4" type="TextureRect" parent="shopUI/unitShop"]
 layout_mode = 2
 texture = ExtResource("1_6ocar")
 
-[node name="Button4" type="Button" parent="shopUI/GridContainer/shopslot4"]
+[node name="Button4" type="Button" parent="shopUI/unitShop/shopslot4"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -91,11 +93,48 @@ offset_bottom = 0.0399933
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="shopslot5" type="TextureRect" parent="shopUI/GridContainer"]
+[node name="shopslot5" type="TextureRect" parent="shopUI/unitShop"]
 layout_mode = 2
 texture = ExtResource("1_6ocar")
 
-[node name="Button5" type="Button" parent="shopUI/GridContainer/shopslot5"]
+[node name="Button5" type="Button" parent="shopUI/unitShop/shopslot5"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.983
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="diceShop" type="GridContainer" parent="shopUI"]
+offset_left = 626.99
+offset_top = 499.325
+offset_right = 898.99
+offset_bottom = 627.326
+scale = Vector2(0.6, 0.6)
+theme_override_constants/h_separation = 16
+columns = 2
+
+[node name="diceshopslot1" type="TextureRect" parent="shopUI/diceShop"]
+layout_mode = 2
+texture = ExtResource("3_ey28k")
+
+[node name="DButton1" type="Button" parent="shopUI/diceShop/diceshopslot1"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.983
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="diceshopslot2" type="TextureRect" parent="shopUI/diceShop"]
+layout_mode = 2
+texture = ExtResource("3_ey28k")
+
+[node name="DButton2" type="Button" parent="shopUI/diceShop/diceshopslot2"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -106,9 +145,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="sellArea" parent="shopUI" instance=ExtResource("3_h627n")]
-offset_left = 896.0
+offset_left = 992.0
 offset_top = 496.0
-offset_right = 1024.0
+offset_right = 1120.0
 offset_bottom = 624.0
 
 [node name="RerollButton" type="Button" parent="shopUI"]
@@ -116,10 +155,10 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 696.0
-offset_top = 536.0
-offset_right = -304.0
-offset_bottom = -56.0
+offset_left = 816.0
+offset_top = 528.0
+offset_right = -184.0
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
@@ -208,6 +247,20 @@ layout_mode = 2
 [node name="benchSlot4" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
 layout_mode = 2
 
+[node name="diceGrid" type="GridContainer" parent="boardUI"]
+offset_left = 744.0
+offset_top = 112.0
+offset_right = 974.0
+offset_bottom = 222.0
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="diceSlot" parent="boardUI/diceGrid" instance=ExtResource("7_6eo1k")]
+layout_mode = 2
+
+[node name="diceSlot2" parent="boardUI/diceGrid" instance=ExtResource("7_6eo1k")]
+layout_mode = 2
+
 [node name="bgColor" type="ColorRect" parent="boardUI"]
 offset_left = 624.0
 offset_top = 379.0
@@ -218,9 +271,11 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.152941, 0.337255, 0.364706, 1)
 
-[connection signal="pressed" from="shopUI/GridContainer/shopslot1/Button1" to="." method="_on_button_1_pressed"]
-[connection signal="pressed" from="shopUI/GridContainer/shopslot2/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="shopUI/GridContainer/shopslot3/Button3" to="." method="_on_button_3_pressed"]
-[connection signal="pressed" from="shopUI/GridContainer/shopslot4/Button4" to="." method="_on_button_4_pressed"]
-[connection signal="pressed" from="shopUI/GridContainer/shopslot5/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="shopUI/unitShop/shopslot1/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="shopUI/unitShop/shopslot2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="shopUI/unitShop/shopslot3/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="shopUI/unitShop/shopslot4/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="shopUI/unitShop/shopslot5/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="shopUI/diceShop/diceshopslot1/DButton1" to="." method="_on_d_button_1_pressed"]
+[connection signal="pressed" from="shopUI/diceShop/diceshopslot2/DButton2" to="." method="_on_d_button_2_pressed"]
 [connection signal="pressed" from="shopUI/RerollButton" to="." method="_on_reroll_button_pressed"]
