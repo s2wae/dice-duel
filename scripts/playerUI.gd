@@ -9,6 +9,7 @@ extends Control
 @onready var bench_slot3= $boardUI/benchGrid/benchSlot3
 @onready var bench_slot4= $boardUI/benchGrid/benchSlot4
 
+var battleStage = preload("res://scenes/battle_stage.tscn")
 var dice = preload("res://scenes/dice.tscn")
 var unit = preload("res://scenes/unit.tscn")
 var briar = preload("res://placeholders/Briar.png")
@@ -32,6 +33,9 @@ var diceArray = [d1, d2, d3, d4, d5, d6]
 
 var boardArray = []
 var benchArray = []
+var tempBoard
+var tempBench
+var tempDice
 
 func _ready():
 	$shopUI/unitShop/shopslot1.texture = unitArray.pick_random()
@@ -54,7 +58,7 @@ func check_bench():
 	var tempCount = 4
 	for i in range(0,4):
 		tempSlot = bench_grid.get_child(i)
-		if not tempSlot.get_node("Area2D").has_overlapping_areas():
+		if not tempSlot.get_node("benchArea").has_overlapping_areas():
 			tempCount -= 1
 	Global.benchCounter = tempCount
 
@@ -64,7 +68,7 @@ func check_dice():
 	var tempCount = 2
 	for i in range(0,2):
 		tempSlot = dice_grid.get_child(i)
-		if not tempSlot.get_node("Area2D").has_overlapping_areas():
+		if not tempSlot.get_node("diceArea").has_overlapping_areas():
 			tempCount -= 1
 	Global.dCounter = tempCount
 
@@ -109,6 +113,9 @@ func _on_button_1_pressed():
 			if curSlot.curState == Global.slotState.FREE:
 				unit_instance.position = curSlot.global_position
 				unit_instance.position += Vector2(55,55)
+				unit_instance.reparent(curSlot)
+				print(unit_instance.global_position)
+				break
 		$shopUI/unitShop/shopslot1.modulate.a = 0
 		$shopUI/unitShop/shopslot1/Button1.visible = false
 		Global.goldCount -= 1
@@ -125,6 +132,9 @@ func _on_button_2_pressed():
 			if curSlot.curState == Global.slotState.FREE:
 				unit_instance.position = curSlot.global_position
 				unit_instance.position += Vector2(55,55)
+				unit_instance.reparent(curSlot)
+				print(unit_instance.global_position)
+				break
 		$shopUI/unitShop/shopslot2.modulate.a = 0
 		$shopUI/unitShop/shopslot2/Button2.visible = false
 		Global.goldCount -= 1
@@ -141,6 +151,9 @@ func _on_button_3_pressed():
 			if curSlot.curState == Global.slotState.FREE:
 				unit_instance.position = curSlot.global_position
 				unit_instance.position += Vector2(55,55)
+				unit_instance.reparent(curSlot)
+				print(unit_instance.global_position)
+				break
 		$shopUI/unitShop/shopslot3.modulate.a = 0
 		$shopUI/unitShop/shopslot3/Button3.visible = false
 		Global.goldCount -= 1
@@ -156,6 +169,9 @@ func _on_button_4_pressed():
 			if curSlot.curState == Global.slotState.FREE:
 				unit_instance.position = curSlot.global_position
 				unit_instance.position += Vector2(55,55)
+				unit_instance.reparent(curSlot)
+				print(unit_instance.global_position)
+				break
 		$shopUI/unitShop/shopslot4.modulate.a = 0
 		$shopUI/unitShop/shopslot4/Button4.visible = false
 		Global.goldCount -= 1
@@ -171,6 +187,9 @@ func _on_button_5_pressed():
 			if curSlot.curState == Global.slotState.FREE:
 				unit_instance.position = curSlot.global_position
 				unit_instance.position += Vector2(55,55)
+				unit_instance.reparent(curSlot)
+				print(unit_instance.global_position)
+				break
 		$shopUI/unitShop/shopslot5.modulate.a = 0
 		$shopUI/unitShop/shopslot5/Button5.visible = false
 		Global.goldCount -= 1
@@ -186,6 +205,9 @@ func _on_d_button_1_pressed():
 			if curDSlot.curState == Global.slotState.FREE:
 				dice_instance.position = curDSlot.global_position
 				dice_instance.position += Vector2(55,55)
+				dice_instance.reparent(curDSlot)
+				print(dice_instance.global_position)
+				break
 		$shopUI/diceShop/diceshopslot1.modulate.a = 0
 		$shopUI/diceShop/diceshopslot1/DButton1.visible = false
 		Global.goldCount -= 1
@@ -197,14 +219,24 @@ func _on_d_button_2_pressed():
 		add_child(dice_instance)
 		dice_instance.get_node("Sprite2D").texture = $shopUI/diceShop/diceshopslot2.texture
 		for i in range(1,-1,-1):
-			var curSlot = dice_grid.get_child(i)
-			if curSlot.curState == Global.slotState.FREE:
-				dice_instance.position = curSlot.global_position
+			var curDSlot = dice_grid.get_child(i)
+			if curDSlot.curState == Global.slotState.FREE:
+				dice_instance.position = curDSlot.global_position
 				dice_instance.position += Vector2(55,55)
+				dice_instance.reparent(curDSlot)
+				print(dice_instance.global_position)
+				break
 		$shopUI/diceShop/diceshopslot2.modulate.a = 0
 		$shopUI/diceShop/diceshopslot2/DButton2.visible = false
 		Global.goldCount -= 1
 		Global.dCounter += 1
 
 
-
+func _on_ready_button_pressed():
+	tempBoard = $boardUI/boardGrid.duplicate()
+	tempBench = $boardUI/benchGrid.duplicate()
+	tempDice = $boardUI/diceGrid.duplicate()
+	Global.curBoard = tempBoard
+	Global.curBench = tempBench
+	Global.curDice = tempDice
+	Global.goto_scene("res://scenes/battle_stage.tscn")

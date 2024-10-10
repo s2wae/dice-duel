@@ -6,6 +6,7 @@
 size = Vector2(110, 110)
 
 [node name="benchSlot" type="ColorRect"]
+show_behind_parent = true
 custom_minimum_size = Vector2(110, 110)
 offset_right = 110.0
 offset_bottom = 110.0
@@ -13,16 +14,16 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0.572549)
 script = ExtResource("1_s0jo7")
 
-[node name="Area2D" type="Area2D" parent="." groups=["bench"]]
+[node name="benchArea" type="Area2D" parent="." groups=["bench"]]
 collision_layer = 15
 collision_mask = 15
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="benchArea"]
 position = Vector2(55, 55)
 shape = SubResource("RectangleShape2D_1dw8r")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="area_entered" from="benchArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="benchArea" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="benchArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="benchArea" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="benchArea" to="." method="_on_area_2d_input_event"]

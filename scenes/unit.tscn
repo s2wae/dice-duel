@@ -14,16 +14,16 @@ position = Vector2(2.38419e-06, -2.38419e-07)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_0m3om")
 
-[node name="Area2D" type="Area2D" parent="." groups=["isUnit"]]
+[node name="unitArea" type="Area2D" parent="." groups=["isUnit"]]
 scale = Vector2(0.8, 0.8)
 collision_layer = 15
 collision_mask = 15
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="unitArea"]
 position = Vector2(-7.15256e-06, -7.15256e-06)
 shape = SubResource("RectangleShape2D_0arq3")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="area_entered" from="unitArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="unitArea" to="." method="_on_area_2d_area_exited"]
+[connection signal="mouse_entered" from="unitArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="unitArea" to="." method="_on_area_2d_mouse_exited"]

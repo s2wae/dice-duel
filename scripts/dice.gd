@@ -39,6 +39,7 @@ func _process(delta):
 
 
 func _on_area_2d_area_entered(area):
+	bodyRef = area
 	if area.is_in_group('sell'):
 		isInSellArea = true
 

@@ -7,11 +7,9 @@ func _ready():
 	pass
 
 
-# I think can apply this to the board slot as well btu do tomorow so tire :c
-
 func _process(delta):
 	curState = Global.slotState.FREE
-	if $Area2D.has_overlapping_areas():
+	if $benchArea.has_overlapping_areas():
 		curState = Global.slotState.USED
 
 

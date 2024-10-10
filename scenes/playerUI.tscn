@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnvjcs0sy28lo"]
+[gd_scene load_steps=9 format=3 uid="uid://cnvjcs0sy28lo"]
 
 [ext_resource type="Texture2D" uid="uid://cumqwmvv7hymh" path="res://placeholders/Teemo.png" id="1_6ocar"]
 [ext_resource type="Script" path="res://scripts/playerUI.gd" id="1_q5eaq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dvuyjt58vc752" path="res://scenes/sell_area.tscn" id="3_h627n"]
 [ext_resource type="PackedScene" uid="uid://c605wpvjnlyc" path="res://scenes/bench_slot.tscn" id="4_pkin6"]
 [ext_resource type="PackedScene" uid="uid://l75k17vh6121" path="res://scenes/dice_slot.tscn" id="7_6eo1k"]
+[ext_resource type="Script" path="res://scenes/ready_button.gd" id="8_3qcew"]
 
 [node name="playerUI" type="Control"]
 layout_mode = 3
@@ -26,10 +27,10 @@ layer = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 656.0
-offset_top = 400.0
-offset_right = 168.0
-offset_bottom = -128.0
+offset_left = 660.0
+offset_top = 336.0
+offset_right = 172.0
+offset_bottom = -192.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6, 0.6)
@@ -108,10 +109,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="diceShop" type="GridContainer" parent="shopUI"]
-offset_left = 626.99
-offset_top = 499.325
-offset_right = 898.99
-offset_bottom = 627.326
+offset_left = 632.0
+offset_top = 424.0
+offset_right = 904.0
+offset_bottom = 552.001
 scale = Vector2(0.6, 0.6)
 theme_override_constants/h_separation = 16
 columns = 2
@@ -145,20 +146,20 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="sellArea" parent="shopUI" instance=ExtResource("3_h627n")]
-offset_left = 992.0
-offset_top = 496.0
-offset_right = 1120.0
-offset_bottom = 624.0
+offset_left = 824.0
+offset_top = 447.0
+offset_right = 952.0
+offset_bottom = 575.0
 
 [node name="RerollButton" type="Button" parent="shopUI"]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 816.0
-offset_top = 528.0
-offset_right = -184.0
-offset_bottom = -64.0
+offset_left = 639.0
+offset_top = 525.0
+offset_right = -361.0
+offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
@@ -177,6 +178,49 @@ text = "Coins:"
 
 [node name="boardUI" type="CanvasLayer" parent="."]
 layer = -2
+
+[node name="diceGrid" type="GridContainer" parent="boardUI"]
+offset_left = 744.0
+offset_top = 88.0
+offset_right = 974.0
+offset_bottom = 198.0
+theme_override_constants/h_separation = 10
+columns = 2
+
+[node name="diceSlot" parent="boardUI/diceGrid" instance=ExtResource("7_6eo1k")]
+layout_mode = 2
+
+[node name="diceSlot2" parent="boardUI/diceGrid" instance=ExtResource("7_6eo1k")]
+layout_mode = 2
+
+[node name="benchGrid" type="GridContainer" parent="boardUI"]
+anchors_preset = -1
+anchor_left = 0.542
+anchor_top = 0.321
+anchor_right = 0.95
+anchor_bottom = 0.491
+offset_left = -0.384033
+offset_top = -0.00801086
+offset_right = -0.400024
+offset_bottom = -0.16803
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="benchSlot1" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
+layout_mode = 2
+
+[node name="benchSlot2" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
+layout_mode = 2
+
+[node name="benchSlot3" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
+layout_mode = 2
+
+[node name="benchSlot4" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
+layout_mode = 2
 
 [node name="boardGrid" type="GridContainer" parent="boardUI"]
 anchors_preset = 15
@@ -220,47 +264,6 @@ layout_mode = 2
 [node name="boardSlot9" parent="boardUI/boardGrid" instance=ExtResource("3_02dck")]
 layout_mode = 2
 
-[node name="benchGrid" type="GridContainer" parent="boardUI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 624.0
-offset_top = 264.0
-offset_right = -58.0
-offset_bottom = -274.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 4
-
-[node name="benchSlot1" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
-layout_mode = 2
-
-[node name="benchSlot2" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
-layout_mode = 2
-
-[node name="benchSlot3" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
-layout_mode = 2
-
-[node name="benchSlot4" parent="boardUI/benchGrid" instance=ExtResource("4_pkin6")]
-layout_mode = 2
-
-[node name="diceGrid" type="GridContainer" parent="boardUI"]
-offset_left = 744.0
-offset_top = 112.0
-offset_right = 974.0
-offset_bottom = 222.0
-theme_override_constants/h_separation = 10
-columns = 2
-
-[node name="diceSlot" parent="boardUI/diceGrid" instance=ExtResource("7_6eo1k")]
-layout_mode = 2
-
-[node name="diceSlot2" parent="boardUI/diceGrid" instance=ExtResource("7_6eo1k")]
-layout_mode = 2
-
 [node name="bgColor" type="ColorRect" parent="boardUI"]
 offset_left = 624.0
 offset_top = 379.0
@@ -271,6 +274,17 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.152941, 0.337255, 0.364706, 1)
 
+[node name="readyButton" type="Button" parent="."]
+texture_filter = 2
+layout_mode = 0
+offset_left = 979.0
+offset_top = 527.0
+offset_right = 1124.0
+offset_bottom = 583.0
+theme_override_font_sizes/font_size = 30
+text = "FIGHT!"
+script = ExtResource("8_3qcew")
+
 [connection signal="pressed" from="shopUI/unitShop/shopslot1/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="shopUI/unitShop/shopslot2/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="shopUI/unitShop/shopslot3/Button3" to="." method="_on_button_3_pressed"]
@@ -279,3 +293,4 @@ color = Color(0.152941, 0.337255, 0.364706, 1)
 [connection signal="pressed" from="shopUI/diceShop/diceshopslot1/DButton1" to="." method="_on_d_button_1_pressed"]
 [connection signal="pressed" from="shopUI/diceShop/diceshopslot2/DButton2" to="." method="_on_d_button_2_pressed"]
 [connection signal="pressed" from="shopUI/RerollButton" to="." method="_on_reroll_button_pressed"]
+[connection signal="pressed" from="readyButton" to="." method="_on_ready_button_pressed"]

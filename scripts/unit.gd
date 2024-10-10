@@ -25,7 +25,7 @@ func _process(delta):
 			Global.isDragging = false
 			var tween = get_tree().create_tween()
 			if isInDropArea and curBoardSlot.curState == Global.slotState.FREE:
-				tween.tween_property(self, "position", bodyRef.global_position + Vector2(75,75), .2).set_ease(Tween.EASE_OUT)
+				tween.tween_property(self, "position", bodyRef.position + Vector2(75,75), 0.2).set_ease(Tween.EASE_OUT)
 				if Input.is_action_just_released('lmb'):
 					print("DISABLED")
 					curBoardSlot.curState = Global.slotState.USED
@@ -43,6 +43,7 @@ func _on_area_2d_area_entered(area):
 		print(curBoardSlot.curState)
 		isInDropArea = true
 		bodyRef = area
+		self.reparent(area)
 	if area.is_in_group('sell'):
 		isInSellArea = true
 

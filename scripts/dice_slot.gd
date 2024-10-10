@@ -9,5 +9,5 @@ func _ready():
 
 func _process(delta):
 	curState = Global.slotState.FREE
-	if $Area2D.has_overlapping_areas():
+	if $diceArea.has_overlapping_areas():
 		curState = Global.slotState.USED
