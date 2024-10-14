@@ -7,15 +7,15 @@ var curBench
 var curDice
 var dCounter = 0
 var benchCounter = 0
-var goldCount = 20
+var goldCount = 30
 var isDragging = false
 var curMouseState = mouseState.RELEASED
 
-enum slotState{
+enum slotState {
 	FREE, USED
 }
 
-enum mouseState{
+enum mouseState {
 	DOWN, RELEASED
 }
 

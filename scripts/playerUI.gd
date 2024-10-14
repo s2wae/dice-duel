@@ -1,7 +1,6 @@
 extends Control
 
 
-@export var gold = Global.goldCount
 @onready var dice_grid = $boardUI/diceGrid
 @onready var bench_grid = $boardUI/benchGrid
 @onready var bench_slot1= $boardUI/benchGrid/benchSlot1
@@ -9,6 +8,7 @@ extends Control
 @onready var bench_slot3= $boardUI/benchGrid/benchSlot3
 @onready var bench_slot4= $boardUI/benchGrid/benchSlot4
 
+var gold = Global.goldCount
 var battleStage = preload("res://scenes/battle_stage.tscn")
 var dice = preload("res://scenes/dice.tscn")
 var unit = preload("res://scenes/unit.tscn")
@@ -45,6 +45,7 @@ func _ready():
 	$shopUI/unitShop/shopslot5.texture = unitArray.pick_random()
 	$shopUI/diceShop/diceshopslot1.texture = diceArray.pick_random()
 	$shopUI/diceShop/diceshopslot2.texture = diceArray.pick_random()
+	gold = Global.goldCount
 
 func _process(delta):
 	gold = Global.goldCount

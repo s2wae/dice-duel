@@ -60,7 +60,6 @@ func _on_area_2d_area_exited(area):
 
 
 
-
 func _on_area_2d_mouse_entered():
 	if not Global.isDragging:
 		canDrag = true
