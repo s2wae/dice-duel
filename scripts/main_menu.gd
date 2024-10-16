@@ -1,42 +1,24 @@
 extends Control
 
 
-var multiplayerPeer = ENetMultiplayerPeer.new()
-var connectedPeerIDs = []
+func ready():
+	pass
 
-const SERVER_ADDRESS = "127.0.0.1"
-const SERVER_PORT = 9999
-
-func _on_host_button_pressed():
+@rpc("any_peer", "call_local")
+func start_game():
 	Global.goto_scene("res://scenes/playerUI.tscn")
-	multiplayerPeer.create_server(SERVER_PORT)
-	multiplayer.multiplayer_peer = multiplayerPeer
-	
-	add_player(1)
-	
-	multiplayerPeer.peer_connected.connect(
-		func(newPeerID):
-			await get_tree().create_timer(1).timeout
-			rpc("add_newly_connected_player")
-			rpc_id(newPeerID, "add_previously_connected_players", connectedPeerIDs)
-			add_player(newPeerID)
-	)
 
 
 func _on_join_button_pressed():
-	Global.goto_scene("res://scenes/playerUI.tscn")
-	multiplayerPeer.create_client(SERVER_ADDRESS, SERVER_PORT)
-	multiplayer.multiplayer_peer = multiplayerPeer
-	
+	Client._connect_to_server()
+	Client.clientName = $nameBox.text
 
-func add_player(peerID):
-	connectedPeerIDs.append(peerID)
 
-@rpc
-func add_newly_connected_player(newPeerID):
-	add_player(newPeerID)
+func _on_host_button_pressed():
+	Server.start_server()
+	print("Waiting for players!")
+	Client.sendPlayerInfo($nameBox.text, multiplayer.get_unique_id())
 
-@rpc
-func add_previously_connected_players(peerIDs):
-	for peerID in peerIDs:
-		add_player(peerID)
+
+func _on_start_button_pressed():
+	start_game.rpc()

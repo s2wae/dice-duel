@@ -18,6 +18,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://scripts/global.gd"
+Server="*res://server/server.gd"
+Client="*res://server/client.gd"
+GameManager="*res://server/game_manager.gd"
 
 [display]
 
