@@ -2,9 +2,10 @@ extends Node2D
 
 
 func _ready():
-	get_tree().root.add_child(Global.curBoard)
-	get_tree().root.add_child(Global.curBench)
-	get_tree().root.add_child(Global.curDice)
+	for i in GameManager.players:
+		get_tree().root.add_child(Global.curBoard)
+		if multiplayer.get_unique_id() == 1:
+			Global.curBoard.position += Vector2(240,0)
 
 
 func _process(delta):

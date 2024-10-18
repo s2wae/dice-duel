@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnvjcs0sy28lo"]
+[gd_scene load_steps=9 format=3 uid="uid://cnvjcs0sy28lo"]
 
 [ext_resource type="Texture2D" uid="uid://cumqwmvv7hymh" path="res://placeholders/Teemo.png" id="1_6ocar"]
 [ext_resource type="Script" path="res://scripts/playerUI.gd" id="1_q5eaq"]
@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://c605wpvjnlyc" path="res://scenes/bench_slot.tscn" id="4_pkin6"]
 [ext_resource type="PackedScene" uid="uid://l75k17vh6121" path="res://scenes/dice_slot.tscn" id="7_6eo1k"]
 [ext_resource type="Script" path="res://scenes/ready_button.gd" id="8_3qcew"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8dwd3"]
 
 [node name="playerUI" type="Control"]
 layout_mode = 3
@@ -280,9 +278,6 @@ offset_bottom = -0.200012
 theme_override_font_sizes/font_size = 30
 text = "FIGHT!"
 script = ExtResource("8_3qcew")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_8dwd3")
 
 [connection signal="pressed" from="shopUI/unitShop/shopslot1/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="shopUI/unitShop/shopslot2/Button2" to="." method="_on_button_2_pressed"]

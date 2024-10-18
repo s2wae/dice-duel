@@ -8,6 +8,8 @@ extends Control
 @onready var bench_slot3= $boardUI/benchGrid/benchSlot3
 @onready var bench_slot4= $boardUI/benchGrid/benchSlot4
 
+
+
 var readyStatus = 0
 var gold = Global.goldCount
 var battleStage = preload("res://scenes/battle_stage.tscn")
@@ -47,11 +49,9 @@ func _ready():
 	$shopUI/diceShop/diceshopslot1.texture = diceArray.pick_random()
 	$shopUI/diceShop/diceshopslot2.texture = diceArray.pick_random()
 	gold = Global.goldCount
-	for i in GameManager.players:
-		$MultiplayerSynchronizer.set_multiplayer_authority(GameManager.players[i].id)
+	
 
 func _process(delta):
-	$MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id()
 	gold = Global.goldCount
 	$shopUI/gold.text = "Gold:" + str(gold)
 	check_bench()
@@ -240,9 +240,14 @@ func _on_d_button_2_pressed():
 
 func _on_ready_button_pressed():
 	tempBoard = $boardUI/boardGrid.duplicate()
+	tempBench = $boardUI/benchGrid.duplicate()
+	tempDice = $boardUI/diceGrid.duplicate()
 	Global.curBoard = tempBoard
 	Global.curBench = tempBench
 	Global.curDice = tempDice
 	readyStatus = 1 #add something to detect when everyone is ready before switching scenes
 	Global.goto_scene("res://scenes/battle_stage.tscn")
-	
+
+
+
+
