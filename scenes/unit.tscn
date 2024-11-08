@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://mg1mfc1hxwh1"]
+[gd_scene load_steps=5 format=3 uid="uid://mg1mfc1hxwh1"]
 
 [ext_resource type="Script" path="res://scripts/unit.gd" id="1_73p68"]
 [ext_resource type="Texture2D" uid="uid://yagjecy4kmvj" path="res://placeholders/Varus.png" id="2_0m3om"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0arq3"]
 size = Vector2(110, 110)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hdnt0"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="unit" type="Node2D" groups=["isUnit"]]
 script = ExtResource("1_73p68")
@@ -22,6 +27,9 @@ collision_mask = 15
 [node name="CollisionShape2D" type="CollisionShape2D" parent="unitArea"]
 position = Vector2(-7.15256e-06, -7.15256e-06)
 shape = SubResource("RectangleShape2D_0arq3")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_hdnt0")
 
 [connection signal="area_entered" from="unitArea" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="unitArea" to="." method="_on_area_2d_area_exited"]

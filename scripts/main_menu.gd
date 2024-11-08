@@ -12,16 +12,18 @@ func ready():
 	pass
 
 
-@rpc("any_peer", "call_local")
+@rpc("call_local")
 func start_game():
-	Global.goto_scene("res://scenes/playerUI.tscn")
+	Global.goto_scene("res://scenes/main.tscn")
 
+#bring both players to main scene, spawn in two player uis and then try stuff
 
 func _on_host_button_pressed():
 	playerName = $nameBox.text
 	GameManager.curPlayerName = playerName
 	await get_tree().create_timer(0.3).timeout
 	GameManager.host_pressed()
+	$VBoxContainer/startButton.visible = true
 
 
 func _on_join_button_pressed():

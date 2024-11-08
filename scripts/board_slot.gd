@@ -2,7 +2,7 @@ extends ColorRect
 
 @export var boardDisabled = false
 var curState = Global.slotState.FREE
-var boardSlotId = -1
+
 
 
 func _ready():

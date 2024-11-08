@@ -14,6 +14,7 @@ func _ready():
 	pass
 
 
+
 func _process(delta):
 	if canDrag:
 		if Input.is_action_just_pressed("lmb"):
@@ -23,18 +24,17 @@ func _process(delta):
 			global_position = get_global_mouse_position()
 		elif Input.is_action_just_released("lmb"):
 			Global.isDragging = false
-			var tween = get_tree().create_tween()
 			if isInDropArea and curBoardSlot.curState == Global.slotState.FREE:
-				tween.tween_property(self, "position", bodyRef.position + Vector2(75,75), 0.2).set_ease(Tween.EASE_OUT)
+				position = bodyRef.position + Vector2(75,75)
 				if Input.is_action_just_released('lmb'):
 					print("DISABLED")
 					curBoardSlot.curState = Global.slotState.USED
 			elif isInSellArea:
 				if Input.is_action_just_released('lmb'):
 					queue_free()
-					Global.goldCount += 1
 			else:
-				tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
+				global_position = initialPos
+
 
 
 func _on_area_2d_area_entered(area):
@@ -46,6 +46,7 @@ func _on_area_2d_area_entered(area):
 		self.reparent(area)
 	if area.is_in_group('sell'):
 		isInSellArea = true
+
 
 
 func _on_area_2d_area_exited(area):

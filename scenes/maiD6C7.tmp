@@ -24,13 +24,6 @@ offset_right = 628.0
 offset_bottom = 71.0
 text = "PLAYER 1"
 
-[node name="Label" type="Label" parent="spawnNodes/0"]
-offset_left = 184.0
-offset_top = 56.0
-offset_right = 240.0
-offset_bottom = 79.0
-text = "TEMP 1"
-
 [node name="1" type="Node2D" parent="spawnNodes" groups=["spawnPoint"]]
 position = Vector2(1280, 0)
 
@@ -49,13 +42,6 @@ offset_right = 620.0
 offset_bottom = 79.0
 text = "PLAYER 2"
 
-[node name="Label" type="Label" parent="spawnNodes/1"]
-offset_left = 184.0
-offset_top = 56.0
-offset_right = 240.0
-offset_bottom = 79.0
-text = "TEMP 2"
-
 [node name="battleNode" type="Node2D" parent="."]
 position = Vector2(0, 768)
 
@@ -71,10 +57,6 @@ position = Vector2(-800, 0)
 [node name="tester" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(0.46, 0.46)
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/unit.tscn")
-spawn_path = NodePath("..")
 
 [connection signal="pressed" from="spawnNodes/0/readyButton" to="." method="_on_ready_button_pressed"]
 [connection signal="pressed" from="spawnNodes/1/readyButton1" to="." method="_on_ready_button_1_pressed"]
