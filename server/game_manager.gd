@@ -37,6 +37,18 @@ func clone(node: Node) -> Node:
 
 
 
+
+@rpc("any_peer", "call_local")
+func click():
+	Global.clicking = true
+
+
+@rpc("any_peer", "call_local")
+func unclick():
+	Global.clicking = false
+
+
+
 @rpc("any_peer")
 func sendPlayerInfo(name, id, readyStatus, curBoard):
 	print("BEING CALLED")

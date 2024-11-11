@@ -8,8 +8,11 @@ size = Vector2(110, 110)
 [node name="benchSlot" type="ColorRect"]
 show_behind_parent = true
 custom_minimum_size = Vector2(110, 110)
-offset_right = 110.0
-offset_bottom = 110.0
+anchors_preset = -1
+anchor_right = 0.095
+anchor_bottom = 0.173
+offset_right = 0.55999
+offset_bottom = -2.104
 mouse_filter = 2
 color = Color(1, 1, 1, 0.572549)
 script = ExtResource("1_s0jo7")

@@ -28,7 +28,7 @@ func _ready():
 
 
 func _process(delta):
-	$tester.make_current()
+	#$tester.make_current()
 	pass
 	
 #the problem is that it is spawning the same board on both sides, instead of two players

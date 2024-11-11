@@ -35,19 +35,15 @@ var benchArray = []
 var tempBench
 var tempDice
 
-@rpc("any_peer", "call_local")
-func spawn_unit():
-	pass
-	#do later
-	
+
 @rpc("any_peer", "call_local")
 func update_bench_path():
 	print("CUR BENCH PATH" + str(bench_grid.get_path()))
 
+#find a way to sync unit spawn and stuff
 
 
 func _ready():
-
 	$shopUI/unitShop/shopslot1.texture = unitArray.pick_random()
 	$shopUI/unitShop/shopslot2.texture = unitArray.pick_random()
 	$shopUI/unitShop/shopslot3.texture = unitArray.pick_random()
@@ -115,23 +111,17 @@ func _on_reroll_button_pressed():
 
 
 func _on_button_1_pressed():
-	update_bench_path.rpc()
 	check_bench()
-	update_bench_path.rpc()
 	if gold > 0 and benchCounter < 4:
 		var unit_instance = unit.instantiate()
 		add_child(unit_instance)
 		unit_instance.get_node("Sprite2D").texture = $shopUI/unitShop/shopslot1.texture
 		for i in range(3,-1,-1):
-			print(bench_grid.get_path())
-			update_bench_path.rpc()
 			var curSlot = bench_grid.get_child(i)
-			update_bench_path.rpc()
 			if curSlot.get_child_count() != 2:
-				unit_instance.position = curSlot.global_position
-				unit_instance.position += Vector2(55,55)
 				unit_instance.reparent(curSlot)
-				print(unit_instance.global_position)
+				unit_instance.position = get_parent().position
+				unit_instance.position += Vector2(55,55)
 				break
 		$shopUI/unitShop/shopslot1.modulate.a = 0
 		$shopUI/unitShop/shopslot1/Button1.visible = false
@@ -148,13 +138,11 @@ func _on_button_2_pressed():
 		add_child(unit_instance)
 		unit_instance.get_node("Sprite2D").texture = $shopUI/unitShop/shopslot2.texture
 		for i in range(3,-1,-1):
-			print(bench_grid.get_path())
 			var curSlot = bench_grid.get_child(i)
 			if curSlot.get_child_count() != 2:
-				unit_instance.position = curSlot.global_position
-				unit_instance.position += Vector2(55,55)
 				unit_instance.reparent(curSlot)
-				print(unit_instance.global_position)
+				unit_instance.position = get_parent().position
+				unit_instance.position += Vector2(55,55)
 				break
 		$shopUI/unitShop/shopslot2.modulate.a = 0
 		$shopUI/unitShop/shopslot2/Button2.visible = false
@@ -171,10 +159,9 @@ func _on_button_3_pressed():
 		for i in range(3,-1,-1):
 			var curSlot = bench_grid.get_child(i)
 			if curSlot.get_child_count() != 2:
-				unit_instance.position = curSlot.global_position
-				unit_instance.position += Vector2(55,55)
 				unit_instance.reparent(curSlot)
-				print(unit_instance.global_position)
+				unit_instance.position = get_parent().position
+				unit_instance.position += Vector2(55,55)
 				break
 		$shopUI/unitShop/shopslot3.modulate.a = 0
 		$shopUI/unitShop/shopslot3/Button3.visible = false
@@ -190,10 +177,9 @@ func _on_button_4_pressed():
 		for i in range(3,-1,-1):
 			var curSlot = bench_grid.get_child(i)
 			if curSlot.get_child_count() != 2:
-				unit_instance.position = curSlot.global_position
-				unit_instance.position += Vector2(55,55)
 				unit_instance.reparent(curSlot)
-				print(unit_instance.global_position)
+				unit_instance.position = get_parent().position
+				unit_instance.position += Vector2(55,55)
 				break
 		$shopUI/unitShop/shopslot4.modulate.a = 0
 		$shopUI/unitShop/shopslot4/Button4.visible = false
@@ -228,10 +214,9 @@ func _on_d_button_1_pressed():
 		for i in range(1,-1,-1):
 			var curDSlot = dice_grid.get_child(i)
 			if curDSlot.get_child_count() != 2:
-				dice_instance.position = curDSlot.global_position
-				dice_instance.position += Vector2(55,55)
 				dice_instance.reparent(curDSlot)
-				print(dice_instance.global_position)
+				dice_instance.position = get_parent().position
+				dice_instance.position += Vector2(55,55)
 				break
 		$shopUI/diceShop/diceshopslot1.modulate.a = 0
 		$shopUI/diceShop/diceshopslot1/DButton1.visible = false
@@ -248,10 +233,9 @@ func _on_d_button_2_pressed():
 		for i in range(1,-1,-1):
 			var curDSlot = dice_grid.get_child(i)
 			if curDSlot.get_child_count() != 2:
-				dice_instance.position = curDSlot.global_position
-				dice_instance.position += Vector2(55,55)
 				dice_instance.reparent(curDSlot)
-				print(dice_instance.global_position)
+				dice_instance.position = get_parent().position
+				dice_instance.position += Vector2(55,55)
 				break
 		$shopUI/diceShop/diceshopslot2.modulate.a = 0
 		$shopUI/diceShop/diceshopslot2/DButton2.visible = false

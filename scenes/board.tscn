@@ -5,15 +5,10 @@
 [node name="board" type="Node2D"]
 
 [node name="boardGrid" type="GridContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = 104.0
 offset_top = 88.0
 offset_right = 574.0
 offset_bottom = 558.0
-grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10

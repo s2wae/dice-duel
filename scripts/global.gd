@@ -1,7 +1,7 @@
 extends Node
 
 
-
+var clicking = false
 var curScene = null
 var curBench
 var curDice

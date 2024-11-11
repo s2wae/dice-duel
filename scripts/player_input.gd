@@ -1,5 +1,7 @@
 extends MultiplayerSynchronizer
 
+class_name PlayerInput
+
 @export var clicking = false
 @export var mousePos : Vector2
 
@@ -10,18 +12,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("lmb"):
 		mousePos = get_viewport().get_mouse_position()
-		click.rpc()
+		GameManager.click.rpc()
 	if Input.is_action_just_released("lmb"):
-		unclick.rpc()
+		GameManager.unclick.rpc()
 
 
-@rpc("any_peer", "call_local")
-func click():
-	clicking = true
-	print(mousePos)
-
-
-@rpc("any_peer", "call_local")
-func unclick():
-	clicking = false
-	print(mousePos)

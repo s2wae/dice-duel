@@ -69,12 +69,9 @@ enabled = false
 position = Vector2(-800, 0)
 
 [node name="tester" type="Camera2D" parent="."]
+position = Vector2(-624, -440)
 anchor_mode = 0
-zoom = Vector2(0.46, 0.46)
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/unit.tscn")
-spawn_path = NodePath("..")
+zoom = Vector2(0.255, 0.255)
 
 [connection signal="pressed" from="spawnNodes/0/readyButton" to="." method="_on_ready_button_pressed"]
 [connection signal="pressed" from="spawnNodes/1/readyButton1" to="." method="_on_ready_button_1_pressed"]
