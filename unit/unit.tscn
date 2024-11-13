@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://mg1mfc1hxwh1"]
+
+[ext_resource type="Script" path="res://unit/unit.gd" id="1_uya7a"]
+[ext_resource type="Texture2D" uid="uid://yagjecy4kmvj" path="res://placeholders/Varus.png" id="2_pqn2n"]
+[ext_resource type="Script" path="res://scripts/drag_and_drop.gd" id="3_ty3rv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0arq3"]
+size = Vector2(106.667, 106.667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tq6a8"]
+bg_color = Color(0.109804, 0.101961, 0.0117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taopv"]
+bg_color = Color(0, 0.615686, 0.231373, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.109804, 0.101961, 0.0117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgl1h"]
+bg_color = Color(0.501961, 0.0745098, 0.764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.109804, 0.101961, 0.0117647, 1)
+
+[node name="unit" type="Area2D" groups=["units"]]
+scale = Vector2(0.15, 0.15)
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_uya7a")
+
+[node name="skin" type="Sprite2D" parent="."]
+position = Vector2(2.98024e-06, -2.98024e-07)
+scale = Vector2(0.888889, 0.888889)
+texture = ExtResource("2_pqn2n")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(53.3333, 53.3333)
+shape = SubResource("RectangleShape2D_0arq3")
+
+[node name="hpBar" type="ProgressBar" parent="."]
+offset_left = -6.66667
+offset_top = -33.3333
+offset_right = 113.333
+offset_bottom = -17.3333
+theme_override_styles/background = SubResource("StyleBoxFlat_tq6a8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_taopv")
+value = 50.0
+show_percentage = false
+
+[node name="manaBar" type="ProgressBar" parent="."]
+offset_left = -6.66667
+offset_top = -13.3333
+offset_right = 113.333
+offset_bottom = -5.33332
+theme_override_styles/background = SubResource("StyleBoxFlat_tq6a8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lgl1h")
+value = 50.0
+show_percentage = false
+
+[node name="dragAndDrop" type="Node2D" parent="." node_paths=PackedStringArray("target")]
+scale = Vector2(0.15, 0.15)
+script = ExtResource("3_ty3rv")
+target = NodePath("..")

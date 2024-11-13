@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://qa2nogtespyl"]
+
+[ext_resource type="Script" path="res://dice/dice.gd" id="1_yqq27"]
+[ext_resource type="Texture2D" uid="uid://b7paafcb3cne2" path="res://placeholders/1_dot.png" id="2_l42s6"]
+[ext_resource type="Script" path="res://scripts/drag_and_drop.gd" id="3_5a26y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0arq3"]
+size = Vector2(110, 110)
+
+[node name="dice" type="Node2D" groups=["isDice"]]
+script = ExtResource("1_yqq27")
+
+[node name="diceArea" type="Area2D" parent="." groups=["isDice"]]
+scale = Vector2(0.8, 0.8)
+collision_layer = 15
+collision_mask = 15
+
+[node name="Sprite2D" type="Sprite2D" parent="diceArea"]
+position = Vector2(2.98024e-06, -2.98024e-07)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("2_l42s6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="diceArea"]
+shape = SubResource("RectangleShape2D_0arq3")
+
+[node name="dragAndDrop" type="Node2D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("3_5a26y")
+target = NodePath("../diceArea")
+
+[connection signal="area_entered" from="diceArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="diceArea" to="." method="_on_area_2d_area_exited"]
+[connection signal="mouse_entered" from="diceArea" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="diceArea" to="." method="_on_area_2d_mouse_exited"]
