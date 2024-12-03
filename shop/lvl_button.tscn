@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfi8uo48b6x3c"]
+
+[ext_resource type="Script" path="res://shop/lvl_button.gd" id="1_bm3ju"]
+[ext_resource type="FontFile" uid="uid://doma2nwpphsme" path="res://assets/fonts/monogram.ttf" id="1_x23n3"]
+[ext_resource type="Texture2D" uid="uid://dcf5im1gk6ywj" path="res://assets/shop/gold.png" id="2_ppyhj"]
+[ext_resource type="Resource" uid="uid://cqg0w8s733dit" path="res://player/player_stats.tres" id="2_qnf7e"]
+
+[node name="lvlButton" type="Button"]
+custom_minimum_size = Vector2(96, 27)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_bm3ju")
+player_stats = ExtResource("2_qnf7e")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 5.0
+offset_right = 81.0
+offset_bottom = 21.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_x23n3")
+text = "buy exp 4"
+
+[node name="goldSprite" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_ppyhj")
+stretch_mode = 3
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

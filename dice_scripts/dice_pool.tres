@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DicePool" load_steps=9 format=3 uid="uid://hhkpoqvcigg6"]
+
+[ext_resource type="Script" path="res://dice_scripts/dice_stats.gd" id="1_g6xhl"]
+[ext_resource type="Resource" uid="uid://duavcnajrksmb" path="res://dice/dice_resources/common/d1.tres" id="2_8q8pn"]
+[ext_resource type="Script" path="res://dice_scripts/dice_pool.gd" id="2_vgmav"]
+[ext_resource type="Resource" uid="uid://blhksmegc26jk" path="res://dice/dice_resources/common/d2.tres" id="3_pw0dx"]
+[ext_resource type="Resource" uid="uid://n8dmaxo8b2gn" path="res://dice/dice_resources/common/d3.tres" id="4_62gd1"]
+[ext_resource type="Resource" uid="uid://dlyk4wa34pbpl" path="res://dice/dice_resources/common/d4.tres" id="5_rsxxf"]
+[ext_resource type="Resource" uid="uid://o0fnldifa0i" path="res://dice/dice_resources/common/d5.tres" id="6_8q621"]
+[ext_resource type="Resource" uid="uid://ct6y0j8jxy2yh" path="res://dice/dice_resources/common/d6.tres" id="7_k148a"]
+
+[resource]
+script = ExtResource("2_vgmav")
+available_dices = Array[ExtResource("1_g6xhl")]([ExtResource("2_8q8pn"), ExtResource("3_pw0dx"), ExtResource("4_62gd1"), ExtResource("5_rsxxf"), ExtResource("6_8q621"), ExtResource("7_k148a")])

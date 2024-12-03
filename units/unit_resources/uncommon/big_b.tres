@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://b627rhyfj2pqo"]
+
+[ext_resource type="Script" path="res://unit_scripts/unit_stats.gd" id="1_0mmqj"]
+
+[resource]
+script = ExtResource("1_0mmqj")
+name = "Big B"
+rarity = 1
+gold_cost = 2
+tier = 1
+pool_count = 25
+skin_coordinates = Vector2i(3, 0)

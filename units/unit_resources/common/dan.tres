@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://brgfbqtk8q6tl"]
+
+[ext_resource type="Script" path="res://unit_scripts/unit_stats.gd" id="1_4inod"]
+
+[resource]
+script = ExtResource("1_4inod")
+name = "Dan"
+rarity = 0
+gold_cost = 1
+tier = 1
+pool_count = 30
+skin_coordinates = Vector2i(3, 1)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqs8lymch8f56"]
+
+[ext_resource type="Script" path="res://units/tiers/tier_sprite.gd" id="1_h1ca2"]
+
+[node name="tierSprite" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_h1ca2")
