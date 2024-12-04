@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=2 format=3 uid="uid://1nosagr4f2yg"]
+
+[ext_resource type="Script" path="res://dice_scripts/dice_stats.gd" id="1_w31x8"]
+
+[resource]
+script = ExtResource("1_w31x8")
+name = "Void D2"
+rarity = 3
+gold_cost = 4
+pool_count = 5
+skin_coordinates = Vector2i(1, 5)

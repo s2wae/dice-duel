@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbs6ifqubs4eq"]
+[gd_scene load_steps=12 format=3 uid="uid://dbs6ifqubs4eq"]
 
 [ext_resource type="Script" path="res://shop/dice_shop_slot.gd" id="1_n1abp"]
 [ext_resource type="Resource" uid="uid://cqg0w8s733dit" path="res://player/player_stats.tres" id="2_88x84"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dcf5im1gk6ywj" path="res://assets/shop/gold.png" id="6_gbo20"]
 [ext_resource type="StyleBox" uid="uid://ceb6xmyuko03f" path="res://assets/shop_slot/shop_unit_card_border.tres" id="7_ud13b"]
 [ext_resource type="Texture2D" uid="uid://cuqvi8ycym3db" path="res://assets/dice/six sided die.png" id="8_pku2q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbslr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03lkr"]
 resource_local_to_scene = true
@@ -25,6 +28,7 @@ anchor_right = 0.074
 anchor_bottom = 0.091
 offset_right = -0.248001
 offset_bottom = 0.0319977
+theme_override_styles/focus = SubResource("StyleBoxFlat_cbslr")
 script = ExtResource("1_n1abp")
 player_stats = ExtResource("2_88x84")
 dice_stats = ExtResource("3_nuwno")
@@ -88,11 +92,12 @@ text = "D1"
 
 [node name="goldContainer" type="HBoxContainer" parent="bottomSection"]
 layout_mode = 2
-offset_left = 63.035
-offset_top = -0.97
-offset_right = 87.035
-offset_bottom = 25.03
-scale = Vector2(0.725, 0.725)
+offset_left = 71.0
+offset_top = 7.0
+offset_right = 91.0
+offset_bottom = 33.0
+scale = Vector2(0.505, 0.505)
+theme_override_constants/separation = 0
 
 [node name="goldCost" type="Label" parent="bottomSection/goldContainer"]
 unique_name_in_owner = true

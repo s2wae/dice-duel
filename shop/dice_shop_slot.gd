@@ -8,7 +8,6 @@ const HOVER_BORDER_COLOR := Color("fafa82")
 @export var player_stats: PlayerStats
 @export var dice_stats: DiceStats : set = _set_dice_stats
 
-
 @onready var traits: Label = %traits
 @onready var bottom: Panel = %bottomSection
 @onready var dice_name: Label = %diceName
@@ -43,7 +42,7 @@ func _set_dice_stats(value: DiceStats) -> void:
 	traits.text = "\n".join(dice_stats.get_trait_names())
 	border_color = DiceStats.RARITY_COLORS[dice_stats.rarity]
 	border_sb.border_color = border_color
-	bottom_sb.bg_color = border_color
+	bottom_sb.bg_color = border_color.darkened(0.2)
 	dice_name.text = dice_stats.name
 	gold_cost.text = str(dice_stats.gold_cost)
 	dice_icon.texture.region.position = Vector2(dice_stats.skin_coordinates) * Main.HALF_CELL_SIZE
@@ -61,7 +60,7 @@ func _on_mouse_exited() -> void:
 func _on_player_stats_changed() -> void:
 	if not dice_stats:
 		return
-
+	
 	var has_enough_gold := player_stats.gold >= dice_stats.gold_cost
 	disabled = not has_enough_gold
 	

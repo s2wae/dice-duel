@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://dgtcfhrtd034e"]
+[gd_scene load_steps=64 format=4 uid="uid://dgtcfhrtd034e"]
 
 [ext_resource type="Script" path="res://main_board/main.gd" id="1_whjqq"]
 [ext_resource type="Texture2D" uid="uid://crf5f6r3aw04s" path="res://assets/map/atlas_floor-16x16.png" id="2_ohslm"]
@@ -17,7 +17,10 @@
 [ext_resource type="Script" path="res://dice_scripts/dice_spawner.gd" id="11_oqokq"]
 [ext_resource type="Script" path="res://unit_scripts/unit_combiner.gd" id="12_23efj"]
 [ext_resource type="PackedScene" uid="uid://es150vlqrmvf" path="res://shop/shop.tscn" id="14_a1fwo"]
-[ext_resource type="PackedScene" uid="uid://bwt7e3hojo5vy" path="res://scenes/sell_area.tscn" id="16_2mxef"]
+[ext_resource type="PackedScene" uid="uid://bwt7e3hojo5vy" path="res://scenes/sell_area/sell_area.tscn" id="16_2mxef"]
+[ext_resource type="PackedScene" uid="uid://c4e0nw366w0sx" path="res://scenes/team_size_ui/team_size_ui.tscn" id="19_e4ufo"]
+[ext_resource type="Resource" uid="uid://cqg0w8s733dit" path="res://player/player_stats.tres" id="20_rpgwg"]
+[ext_resource type="PackedScene" uid="uid://bequiptcec7eg" path="res://scenes/traits/traits.tscn" id="21_iery1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26ulk"]
 texture = ExtResource("2_ohslm")
@@ -6480,7 +6483,7 @@ size = Vector2i(12, 1)
 
 [node name="dice_slots" type="TileMapLayer" parent="." node_paths=PackedStringArray("dice_grid", "tile_highlighter")]
 texture_filter = 1
-position = Vector2(16, 80)
+position = Vector2(320, 144)
 tile_set = SubResource("TileSet_f46b4")
 script = ExtResource("9_70cgr")
 dice_grid = NodePath("diceSlotsGrid")
@@ -6547,7 +6550,7 @@ script = ExtResource("12_23efj")
 buffer_timer = NodePath("bufferTimer")
 
 [node name="bufferTimer" type="Timer" parent="unitCombiner"]
-wait_time = 0.5
+wait_time = 0.4
 one_shot = true
 
 [node name="sellArea" parent="." instance=ExtResource("16_2mxef")]
@@ -6565,3 +6568,24 @@ unique_name_in_owner = true
 offset_right = -1152.0
 offset_bottom = -648.0
 scale = Vector2(0.335, 0.335)
+
+[node name="teamSizeUI" parent="UI" node_paths=PackedStringArray("board_grid") instance=ExtResource("19_e4ufo")]
+anchors_preset = -1
+anchor_left = 0.168
+anchor_top = 0.005
+anchor_right = 0.168
+anchor_bottom = 0.005
+offset_left = -11.536
+offset_top = -0.24
+offset_right = 10.464
+offset_bottom = 16.76
+player_stats = ExtResource("20_rpgwg")
+board_grid = NodePath("../../board/boardUnitGrid")
+
+[node name="traits" parent="UI" node_paths=PackedStringArray("dice_grid") instance=ExtResource("21_iery1")]
+offset_left = 20.0
+offset_top = 7.0
+offset_right = 20.0
+offset_bottom = 7.0
+scale = Vector2(0.54, 0.54)
+dice_grid = NodePath("../../dice_slots/diceSlotsGrid")

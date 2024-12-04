@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="DiceStats" load_steps=2 format=3 uid="uid://blhksmegc26jk"]
+[gd_resource type="Resource" script_class="DiceStats" load_steps=4 format=3 uid="uid://blhksmegc26jk"]
 
 [ext_resource type="Script" path="res://dice_scripts/dice_stats.gd" id="1_ie6jb"]
+[ext_resource type="Script" path="res://scenes/traits/trait_data/trait.gd" id="2_h46ol"]
+[ext_resource type="Resource" uid="uid://cxoccmxs4cw48" path="res://scenes/traits/trait_resources/chill.tres" id="3_daofo"]
 
 [resource]
 script = ExtResource("1_ie6jb")
 name = "D2"
 rarity = 0
 gold_cost = 1
-tier = 1
+traits = Array[ExtResource("2_h46ol")]([ExtResource("3_daofo")])
 pool_count = 30
 skin_coordinates = Vector2i(1, 0)

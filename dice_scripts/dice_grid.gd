@@ -3,8 +3,9 @@ extends Node2D
 
 signal dice_grid_changed
 
+
 @export var size: Vector2i
-@export var die: Dictionary
+var die: Dictionary
 
 
 func _ready() -> void:
@@ -15,6 +16,7 @@ func _ready() -> void:
 
 func add_dice(tile: Vector2i, dice: Node) -> void:
 	die[tile] = dice
+	dice.tree_exited.connect(_on_dice_tree_exited.bind(dice, tile))
 	dice_grid_changed.emit()
 
 
@@ -24,6 +26,7 @@ func remove_dice(tile: Vector2i) -> void:
 	if not dice:
 		return
 	
+	dice.tree_exited.disconnect(_on_dice_tree_exited)
 	die[tile] = null
 	dice_grid_changed.emit()
 
@@ -40,7 +43,6 @@ func get_first_empty_tile() -> Vector2i:
 	for tile in die:
 		if not is_tile_occupied(tile):
 			return tile
-	
 	return Vector2i(-1, -1)
 
 
@@ -52,3 +54,9 @@ func get_all_die() -> Array[Dice]:
 			dice_array.append(dice)
 	
 	return dice_array
+
+
+func _on_dice_tree_exited(dice: Dice, tile: Vector2i) -> void:
+	if dice.is_queued_for_deletion():
+		die[tile] = null
+		dice_grid_changed.emit()

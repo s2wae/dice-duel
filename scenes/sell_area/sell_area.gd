@@ -52,7 +52,7 @@ func _on_dice_dropped(_starting_position: Vector2, dice: Dice) -> void:
 
 
 func _on_area_entered(object) -> void:
-	if object == Unit:
+	if object.is_in_group("units"):
 		current_unit = object
 		gold_label.text = str(object.stats.get_gold_value())
 		gold.show()
@@ -63,7 +63,7 @@ func _on_area_entered(object) -> void:
 
 
 func _on_area_exited(object) -> void:
-	if object is Unit:
+	if object.is_in_group("units"):
 		if object and object == current_unit:
 			current_unit = null
 	else:

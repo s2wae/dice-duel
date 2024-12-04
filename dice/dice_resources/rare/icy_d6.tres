@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=2 format=3 uid="uid://cnxbquew2ryhy"]
+
+[ext_resource type="Script" path="res://dice_scripts/dice_stats.gd" id="1_jp4fb"]
+
+[resource]
+script = ExtResource("1_jp4fb")
+name = "Icy D6"
+rarity = 2
+gold_cost = 3
+pool_count = 10
+skin_coordinates = Vector2i(5, 6)

@@ -31,5 +31,4 @@ func get_random_dice_by_rarity(rarity: DiceStats.Rarity) -> DiceStats:
 
 func add_dice(dice: DiceStats) -> void:
 	dice = dice.duplicate()
-	dice.tier = 1
 	dice_pool.append(dice)

@@ -4,9 +4,9 @@ extends Resource
 enum Rarity {COMMON, UNCOMMON, RARE, LEGENDARY}
 
 const RARITY_COLORS := {
-	Rarity.COMMON: Color("124a2e"),
-	Rarity.UNCOMMON: Color("1c527c"),
-	Rarity.RARE: Color("ab0979"),
+	Rarity.COMMON: Color("d1c8be"),
+	Rarity.UNCOMMON: Color("319e52"),
+	Rarity.RARE: Color("c338d9"),
 	Rarity.LEGENDARY: Color("ea940b"),
 }
 
@@ -17,6 +17,11 @@ const RARITY_COLORS := {
 @export var gold_cost := 1
 @export_range(1, 3) var tier := 1 : set = _set_tier
 #@export var traits: Array[Trait]
+@export var health_points := 100
+@export var mana_start := 20
+@export var mana_gain := 10
+@export var attack_dmg := 10
+@export var attack_speed := 1
 @export var pool_count := 15
 
 @export_category("Visuals")

@@ -6,7 +6,6 @@ const HALF_CELL_SIZE := Vector2(16, 16)
 const QUARTER_CELL_SIZE := Vector2(8, 8)
 const CUSTOM_SKIN_SIZE := Vector2(18, 18)
 
-
 @onready var sell_area: SellArea = $sellArea
 @onready var unit_mover: UnitMover = $unitMover
 @onready var unit_spawner: UnitSpawner = $unitSpawner

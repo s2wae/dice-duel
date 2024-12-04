@@ -17,7 +17,7 @@ func _get_first_available_area() -> DicePlayArea:
 
 func spawn_dice(dice: DiceStats) -> void:
 	var area := _get_first_available_area()
-	if area:
+	if area != null:
 		var new_dice := DICE.instantiate()
 		var tile := area.dice_grid.get_first_empty_tile()
 		area.dice_grid.add_child(new_dice)

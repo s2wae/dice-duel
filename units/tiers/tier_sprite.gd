@@ -2,9 +2,9 @@ class_name TierSprite
 extends TextureRect
 
 const TIER_ICONS := {
-	1: preload("res://assets/units/tiers/level1.png"),
-	2: preload("res://assets/units/tiers/level2.png"),
-	3: preload("res://assets/units/tiers/level3.png"),
+	1: preload("res://assets/units/tiers/tier1.png"),
+	2: preload("res://assets/units/tiers/tier2.png"),
+	3: preload("res://assets/units/tiers/tier3.png"),
 }
 
 @export var stats: UnitStats : set = _set_stats

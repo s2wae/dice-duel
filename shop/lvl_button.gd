@@ -12,10 +12,10 @@ func _ready() -> void:
 
 func _on_player_stats_changed() -> void:
 	var has_enough_gold := player_stats.gold >= 4
-	var level_10 := player_stats.level == 10
-	disabled = not has_enough_gold or level_10
+	var level_9 := player_stats.level == 9
+	disabled = not has_enough_gold or level_9
 	
-	if has_enough_gold and not level_10:
+	if has_enough_gold and not level_9:
 		hbox_container.modulate.a = 1.0
 	else:
 		hbox_container.modulate.a = 0.5

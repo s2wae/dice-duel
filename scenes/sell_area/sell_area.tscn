@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bwt7e3hojo5vy"]
 
-[ext_resource type="Script" path="res://scenes/sell_area.gd" id="1_nvf8h"]
-[ext_resource type="Texture2D" uid="uid://crf5f6r3aw04s" path="res://assets/map/atlas_floor-16x16.png" id="2_8nj6x"]
+[ext_resource type="Script" path="res://scenes/sell_area/sell_area.gd" id="1_nvf8h"]
 [ext_resource type="Resource" uid="uid://cqg0w8s733dit" path="res://player/player_stats.tres" id="2_n22k8"]
 [ext_resource type="FontFile" uid="uid://doma2nwpphsme" path="res://assets/fonts/monogram.ttf" id="3_dxnsp"]
+[ext_resource type="Texture2D" uid="uid://cqq1htw45ebki" path="res://assets/map/tiles.png" id="3_plx76"]
 [ext_resource type="Texture2D" uid="uid://dcf5im1gk6ywj" path="res://assets/shop/gold.png" id="4_imd0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfn78"]
@@ -17,10 +17,12 @@ player_stats = ExtResource("2_n22k8")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 texture_filter = 1
-texture = ExtResource("2_8nj6x")
+position = Vector2(-0.148651, -1.74326)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("3_plx76")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 80, 16, 16)
+region_rect = Rect2(32, 544, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(23, 8)

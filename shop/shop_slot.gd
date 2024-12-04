@@ -8,7 +8,6 @@ const HOVER_BORDER_COLOR := Color("fafa82")
 @export var player_stats: PlayerStats
 @export var unit_stats: UnitStats : set = _set_unit_stats
 
-
 @onready var traits: Label = %traits
 @onready var bottom: Panel = %bottomSection
 @onready var unit_name: Label = %unitName
@@ -43,7 +42,7 @@ func _set_unit_stats(value: UnitStats) -> void:
 	traits.text = "\n".join(unit_stats.get_trait_names())
 	border_color = UnitStats.RARITY_COLORS[unit_stats.rarity]
 	border_sb.border_color = border_color
-	bottom_sb.bg_color = border_color
+	bottom_sb.bg_color = border_color.darkened(0.2)
 	unit_name.text = unit_stats.name
 	gold_cost.text = str(unit_stats.gold_cost)
 	unit_icon.texture.region.position = Vector2(unit_stats.skin_coordinates) * Main.CUSTOM_SKIN_SIZE
@@ -61,7 +60,8 @@ func _on_mouse_exited() -> void:
 func _on_player_stats_changed() -> void:
 	if not unit_stats:
 		return
-
+	
+	
 	var has_enough_gold := player_stats.gold >= unit_stats.gold_cost
 	disabled = not has_enough_gold
 	

@@ -11,6 +11,7 @@ signal quick_sell_pressed
 @onready var mana_bar: ProgressBar = $manaBar
 @onready var tier_icon: TierSprite = $tierSprite
 @onready var drag_and_drop: DragAndDrop = $dragAndDrop
+@onready var animations: UnitAnimations = $unitAnimations
 
 var is_hovered := false
 

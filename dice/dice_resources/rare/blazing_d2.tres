@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=2 format=3 uid="uid://b56fjps2dkwp8"]
+
+[ext_resource type="Script" path="res://dice_scripts/dice_stats.gd" id="1_2mr8q"]
+
+[resource]
+script = ExtResource("1_2mr8q")
+name = "Blazing D2"
+rarity = 2
+gold_cost = 3
+pool_count = 10
+skin_coordinates = Vector2i(1, 11)

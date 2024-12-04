@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://m4qtqcmkkxt2"]
+[gd_scene load_steps=12 format=3 uid="uid://m4qtqcmkkxt2"]
 
 [ext_resource type="Script" path="res://shop/shop_slot.gd" id="1_3geam"]
 [ext_resource type="Resource" uid="uid://cqg0w8s733dit" path="res://player/player_stats.tres" id="2_jqodd"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dcf5im1gk6ywj" path="res://assets/shop/gold.png" id="4_l1354"]
 [ext_resource type="StyleBox" uid="uid://ceb6xmyuko03f" path="res://assets/shop_slot/shop_unit_card_border.tres" id="5_ifi7h"]
 [ext_resource type="Texture2D" uid="uid://cq75nr41lkg8c" path="res://assets/units/Basic Undead Sprites/Basic Undead 1x.png" id="8_nre12"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ogmu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03lkr"]
 resource_local_to_scene = true
@@ -24,6 +26,7 @@ anchor_right = 0.074
 anchor_bottom = 0.091
 offset_right = -0.248001
 offset_bottom = 0.0319977
+theme_override_styles/focus = SubResource("StyleBoxFlat_2ogmu")
 script = ExtResource("1_3geam")
 player_stats = ExtResource("2_jqodd")
 unit_stats = ExtResource("3_02e6a")
@@ -39,13 +42,13 @@ color = Color(0.205117, 0.205117, 0.205117, 1)
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
-offset_left = 5.0
-offset_top = 1.715
-offset_right = 45.0
-offset_bottom = 30.715
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 49.0
+offset_bottom = 33.0
 theme_override_fonts/font = ExtResource("2_k0t0g")
-text = "vardan
-bug"
+text = "???
+???"
 
 [node name="bottomSection" type="Panel" parent="."]
 unique_name_in_owner = true
@@ -87,11 +90,12 @@ text = "John"
 
 [node name="goldContainer" type="HBoxContainer" parent="bottomSection"]
 layout_mode = 2
-offset_left = 63.035
-offset_top = -0.97
-offset_right = 87.035
-offset_bottom = 25.03
-scale = Vector2(0.725, 0.725)
+offset_left = 71.0
+offset_top = 8.0
+offset_right = 90.0
+offset_bottom = 34.0
+scale = Vector2(0.505, 0.505)
+theme_override_constants/separation = 0
 
 [node name="goldCost" type="Label" parent="bottomSection/goldContainer"]
 unique_name_in_owner = true

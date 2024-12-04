@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://cq75nr41lkg8c" path="res://assets/units/Basic Undead Sprites/Basic Undead 1x.png" id="3_dlumo"]
 [ext_resource type="Script" path="res://components/drag_and_drop.gd" id="3_ty3rv"]
 [ext_resource type="PackedScene" uid="uid://bqs8lymch8f56" path="res://units/tiers/tier_sprite.tscn" id="3_ylg8l"]
-[ext_resource type="Texture2D" uid="uid://bddp44s84pvqa" path="res://assets/units/tiers/level1.png" id="4_i1jmv"]
+[ext_resource type="Script" path="res://unit_scripts/unit_animations.gd" id="6_dtauy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0arq3"]
 size = Vector2(106.667, 106.667)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tq6a8"]
-bg_color = Color(0.109804, 0.101961, 0.0117647, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taopv"]
 bg_color = Color(0, 0.615686, 0.231373, 1)
@@ -19,7 +19,7 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.109804, 0.101961, 0.0117647, 1)
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgl1h"]
 bg_color = Color(0.501961, 0.0745098, 0.764706, 1)
@@ -27,7 +27,7 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 2
 border_width_bottom = 3
-border_color = Color(0.109804, 0.101961, 0.0117647, 1)
+border_color = Color(0, 0, 0, 1)
 
 [node name="unit" type="Area2D" groups=["units"]]
 position = Vector2(0, -3)
@@ -48,11 +48,21 @@ region_rect = Rect2(36, 0, 18, 18)
 position = Vector2(53.3333, 40)
 shape = SubResource("RectangleShape2D_0arq3")
 
+[node name="tierSprite" parent="." instance=ExtResource("3_ylg8l")]
+offset_left = -10.316
+offset_top = -38.724
+offset_right = 16.684
+offset_bottom = -11.724
+scale = Vector2(1.6, 1.6)
+stats = ExtResource("2_umijn")
+metadata/_edit_use_anchors_ = true
+
 [node name="hpBar" type="ProgressBar" parent="."]
-offset_left = 6.66667
-offset_top = -33.3333
-offset_right = 100.667
-offset_bottom = -20.3333
+offset_left = 22.576
+offset_top = -26.336
+offset_right = 116.576
+offset_bottom = -13.336
+scale = Vector2(0.8, 0.8)
 theme_override_styles/background = SubResource("StyleBoxFlat_tq6a8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_taopv")
 value = 100.0
@@ -60,28 +70,24 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="manaBar" type="ProgressBar" parent="."]
-offset_left = 6.66667
-offset_top = -20.0
-offset_right = 100.667
-offset_bottom = -11.0
+offset_left = 22.576
+offset_top = -15.814
+offset_right = 116.576
+offset_bottom = -6.814
+scale = Vector2(0.8, 0.8)
 theme_override_styles/background = SubResource("StyleBoxFlat_tq6a8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lgl1h")
 value = 20.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="tierSprite" parent="." instance=ExtResource("3_ylg8l")]
-texture_filter = 1
-offset_top = -6.66667
-offset_right = 27.0
-offset_bottom = 20.3333
-texture = ExtResource("4_i1jmv")
-stats = ExtResource("2_umijn")
-metadata/_edit_use_anchors_ = true
-
 [node name="dragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("3_ty3rv")
 target = NodePath("..")
+
+[node name="unitAnimations" type="Node" parent="." node_paths=PackedStringArray("unit")]
+script = ExtResource("6_dtauy")
+unit = NodePath("..")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

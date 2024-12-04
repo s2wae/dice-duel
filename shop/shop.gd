@@ -60,8 +60,10 @@ func _put_back_remaining_to_pool() -> void:
 func _on_unit_bought(unit: UnitStats) -> void:
 	unit_bought.emit(unit)
 
+
 func _on_dice_bought(dice: DiceStats) -> void:
 	dice_bought.emit(dice)
+
 
 func _on_reroll_button_pressed() -> void:
 	_put_back_remaining_to_pool()

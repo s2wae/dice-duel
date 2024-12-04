@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bequiptcec7eg"]
+
+[ext_resource type="Script" path="res://scenes/traits/traits.gd" id="1_ox50m"]
+[ext_resource type="PackedScene" uid="uid://d1hndgfvv8vs2" path="res://scenes/trait_ui/trait_ui.tscn" id="2_u2xbm"]
+
+[node name="traits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ox50m")
+
+[node name="traitContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="traitUI" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2
+
+[node name="traitUI2" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2
+
+[node name="traitUI3" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2
+
+[node name="traitUI4" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2

@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1hndgfvv8vs2"]
+
+[ext_resource type="Script" path="res://scenes/trait_ui/trait_ui.gd" id="1_eur0t"]
+[ext_resource type="Resource" uid="uid://cxoccmxs4cw48" path="res://scenes/traits/trait_resources/chill.tres" id="2_4b1ox"]
+[ext_resource type="PackedScene" uid="uid://bo66yqgasq5cn" path="res://scenes/trait_sprite/trait_sprite.tscn" id="2_qnijs"]
+[ext_resource type="FontFile" uid="uid://doma2nwpphsme" path="res://assets/fonts/monogram.ttf" id="3_rgo2d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u06py"]
+bg_color = Color(0.0013545, 0.00204971, 0.0197331, 0.580392)
+border_width_left = 5
+border_width_right = 3
+border_color = Color(0, 0.00392157, 0.0196078, 0.580392)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[node name="traitUI" type="PanelContainer"]
+offset_right = 76.0
+offset_bottom = 53.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u06py")
+script = ExtResource("1_eur0t")
+trait_data = ExtResource("2_4b1ox")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="traitSprite" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_qnijs")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="activeDie" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rgo2d")
+theme_override_font_sizes/font_size = 32
+text = "1"
+horizontal_alignment = 1
+
+[node name="traitLevel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(32, 14)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_rgo2d")
+bbcode_enabled = true
+text = "1/2/3"
+scroll_active = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="traitName" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rgo2d")
+text = "chill"

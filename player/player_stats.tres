@@ -7,3 +7,5 @@ script = ExtResource("1_pdyxk")
 gold = 1000
 xp = 0
 level = 0
+unit_free_space = true
+dice_free_space = true

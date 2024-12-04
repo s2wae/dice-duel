@@ -3,8 +3,9 @@ extends Node2D
 
 signal unit_grid_changed
 
+
 @export var size: Vector2i
-@export var units: Dictionary
+var units: Dictionary
 
 
 func _ready() -> void:
@@ -15,6 +16,7 @@ func _ready() -> void:
 
 func add_unit(tile: Vector2i, unit: Node) -> void:
 	units[tile] = unit
+	unit.tree_exited.connect(_on_unit_tree_exited.bind(unit, tile))
 	unit_grid_changed.emit()
 
 
@@ -24,6 +26,7 @@ func remove_unit(tile: Vector2i) -> void:
 	if not unit:
 		return
 	
+	unit.tree_exited.disconnect(_on_unit_tree_exited)
 	units[tile] = null
 	unit_grid_changed.emit()
 
@@ -40,7 +43,6 @@ func get_first_empty_tile() -> Vector2i:
 	for tile in units:
 		if not is_tile_occupied(tile):
 			return tile
-	
 	return Vector2i(-1, -1)
 
 
@@ -52,3 +54,9 @@ func get_all_units() -> Array[Unit]:
 			unit_array.append(unit)
 	
 	return unit_array
+
+
+func _on_unit_tree_exited(unit: Unit, tile: Vector2i) -> void:
+	if unit.is_queued_for_deletion():
+		units[tile] = null
+		unit_grid_changed.emit()
