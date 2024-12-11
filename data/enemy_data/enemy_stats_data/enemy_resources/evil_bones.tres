@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://cauu686meh2vl"]
+
+[ext_resource type="Script" path="res://data/unit_data/unit_stats_data/unit_stats/unit_stats.gd" id="1_3jgf6"]
+
+[resource]
+script = ExtResource("1_3jgf6")
+name = "Evil Bones"
+rarity = 0
+gold_cost = 1
+tier = 1
+health_points = 100
+mana_start = 20
+mana_gain = 10
+attack_dmg = 10
+attack_speed = 0.3
+attack_range = 60
+pool_count = 15
+move_speed = 0.2
+skin_coordinates = Vector2i(2, 0)

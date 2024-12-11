@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cctggtg1py7y1"]
+
+[ext_resource type="Script" path="res://scenes/ui_element_scenes/fight_button/fight_button.gd" id="1_8smrw"]
+[ext_resource type="FontFile" uid="uid://doma2nwpphsme" path="res://assets/fonts/monogram.ttf" id="2_wakjk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wq0a4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mk3ek"]
+bg_color = Color(0.121569, 0.517647, 0.498039, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.960784, 0.745098, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hc53d"]
+bg_color = Color(0.12262, 0.519425, 0.498361, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(3.36915e-07, 0.459193, 0.438304, 1)
+
+[node name="fightButton" type="Button"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 25)
+theme_override_styles/focus = SubResource("StyleBoxFlat_wq0a4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mk3ek")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hc53d")
+script = ExtResource("1_8smrw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(80, 25)
+layout_mode = 0
+offset_right = 51.0
+offset_bottom = 23.0
+alignment = 1
+
+[node name="fightLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wakjk")
+text = "FIGHT!!"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

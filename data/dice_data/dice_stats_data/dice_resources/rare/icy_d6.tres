@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=4 format=3 uid="uid://cnxbquew2ryhy"]
+
+[ext_resource type="Script" path="res://data/dice_data/dice_stats_data/dice_stats/dice_stats.gd" id="1_lqwft"]
+[ext_resource type="Script" path="res://data/trait_data/trait/trait.gd" id="2_sf8dk"]
+[ext_resource type="Resource" uid="uid://cxoccmxs4cw48" path="res://data/trait_data/trait_resources/type_traits/chill.tres" id="3_6dckl"]
+
+[resource]
+script = ExtResource("1_lqwft")
+name = "Icy D6"
+rarity = 2
+gold_cost = 3
+traits = Array[ExtResource("2_sf8dk")]([ExtResource("3_6dckl")])
+pool_count = 10
+skin_coordinates = Vector2i(5, 6)

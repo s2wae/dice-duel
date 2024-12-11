@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Trait" load_steps=4 format=3 uid="uid://cxoccmxs4cw48"]
+
+[ext_resource type="Texture2D" uid="uid://cuqvi8ycym3db" path="res://assets/dice/six sided die.png" id="1_wjs4s"]
+[ext_resource type="Script" path="res://data/trait_data/trait/trait.gd" id="2_x37fm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvep7"]
+atlas = ExtResource("1_wjs4s")
+region = Rect2(0, 208, 16, 16)
+
+[resource]
+script = ExtResource("2_x37fm")
+name = "Chill"
+icon = SubResource("AtlasTexture_uvep7")
+description = "cold"
+levels = 3
+dice_requirements = Array[int]([1, 2, 3])
+dice_modifiers = Array[PackedScene]([])

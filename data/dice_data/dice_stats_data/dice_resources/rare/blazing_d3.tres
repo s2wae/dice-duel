@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=5 format=3 uid="uid://cuvncwccdesn2"]
+
+[ext_resource type="Script" path="res://data/dice_data/dice_stats_data/dice_stats/dice_stats.gd" id="1_sdw51"]
+[ext_resource type="Script" path="res://data/trait_data/trait/trait.gd" id="2_hpo77"]
+[ext_resource type="Resource" uid="uid://dwlle33l5xumi" path="res://data/trait_data/trait_resources/type_traits/blaze.tres" id="3_0ogmb"]
+[ext_resource type="Resource" uid="uid://bylm66fs53ih3" path="res://data/trait_data/trait_resources/dice_trait/3-stack.tres" id="4_gqx8o"]
+
+[resource]
+script = ExtResource("1_sdw51")
+name = "Blazing D3"
+rarity = 2
+gold_cost = 3
+traits = Array[ExtResource("2_hpo77")]([ExtResource("3_0ogmb"), ExtResource("4_gqx8o")])
+pool_count = 10
+skin_coordinates = Vector2i(2, 11)

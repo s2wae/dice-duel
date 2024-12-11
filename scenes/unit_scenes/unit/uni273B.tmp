@@ -1,0 +1,158 @@
+[gd_scene load_steps=19 format=3 uid="uid://mg1mfc1hxwh1"]
+
+[ext_resource type="Script" path="res://scenes/unit_scenes/unit/unit.gd" id="1_uya7a"]
+[ext_resource type="Resource" uid="uid://cqvsjgpn4pwyd" path="res://data/unit_data/unit_stats_data/unit_resources/uncommon/joe.tres" id="2_umijn"]
+[ext_resource type="Texture2D" uid="uid://cq75nr41lkg8c" path="res://assets/units/Basic Undead Sprites/Basic Undead 1x.png" id="3_dlumo"]
+[ext_resource type="Script" path="res://components/general_components/drag_and_drop.gd" id="3_ty3rv"]
+[ext_resource type="PackedScene" uid="uid://bqs8lymch8f56" path="res://scenes/unit_scenes/tier_sprite/tier_sprite.tscn" id="3_ylg8l"]
+[ext_resource type="Script" path="res://components/unit_components/unit_animations.gd" id="6_dtauy"]
+[ext_resource type="Script" path="res://data/finite_state_machine_data/finite_state_machine/finite_state_machine.gd" id="7_lq6nh"]
+[ext_resource type="Script" path="res://data/unit_data/unit_states_data/unit_idle_state.gd" id="8_b2qck"]
+[ext_resource type="Resource" uid="uid://co1onuocg62h4" path="res://data/game_state_data/game_state_resources/game_state.tres" id="9_u12un"]
+[ext_resource type="Script" path="res://data/unit_data/unit_states_data/unit_attack_state.gd" id="10_n0mc0"]
+[ext_resource type="Script" path="res://data/unit_data/unit_states_data/death_state.gd" id="10_nquqd"]
+[ext_resource type="Script" path="res://data/unit_data/unit_states_data/unit_enemy_search_state.gd" id="12_klm2a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8rb8"]
+radius = 50.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tq6a8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taopv"]
+bg_color = Color(0, 0.615686, 0.231373, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgl1h"]
+bg_color = Color(0.501961, 0.0745098, 0.764706, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8gdk"]
+radius = 73.3334
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7wmqe"]
+radius = 620.3
+
+[node name="unit" type="Area2D" groups=["units"]]
+position = Vector2(0, -3)
+scale = Vector2(0.15, 0.15)
+collision_layer = 769
+script = ExtResource("1_uya7a")
+stats = ExtResource("2_umijn")
+
+[node name="skin" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(2.27374e-13, -20)
+scale = Vector2(5.92593, 5.92593)
+texture = ExtResource("3_dlumo")
+centered = false
+region_enabled = true
+region_rect = Rect2(36, 0, 18, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(53.3333, 40)
+shape = SubResource("CircleShape2D_v8rb8")
+
+[node name="tierSprite" parent="." instance=ExtResource("3_ylg8l")]
+unique_name_in_owner = true
+offset_left = -10.316
+offset_top = -38.724
+offset_right = 16.684
+offset_bottom = -11.724
+scale = Vector2(1.6, 1.6)
+stats = ExtResource("2_umijn")
+metadata/_edit_use_anchors_ = true
+
+[node name="hpBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 22.576
+offset_top = -26.336
+offset_right = 116.576
+offset_bottom = -13.336
+scale = Vector2(0.8, 0.8)
+theme_override_styles/background = SubResource("StyleBoxFlat_tq6a8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_taopv")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="manaBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 22.576
+offset_top = -15.814
+offset_right = 116.576
+offset_bottom = -6.814
+scale = Vector2(0.8, 0.8)
+theme_override_styles/background = SubResource("StyleBoxFlat_tq6a8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lgl1h")
+value = 20.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="dragAndDrop" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("3_ty3rv")
+target = NodePath("..")
+
+[node name="unitAnimations" type="Node" parent="." node_paths=PackedStringArray("unit")]
+script = ExtResource("6_dtauy")
+unit = NodePath("..")
+
+[node name="fsm" type="Node" parent="." node_paths=PackedStringArray("initial_state", "parent_node")]
+script = ExtResource("7_lq6nh")
+initial_state = NodePath("idle")
+parent_node = NodePath("..")
+
+[node name="idle" type="Node" parent="fsm"]
+script = ExtResource("8_b2qck")
+game_state = ExtResource("9_u12un")
+
+[node name="attack" type="Node" parent="fsm" node_paths=PackedStringArray("unit")]
+script = ExtResource("10_n0mc0")
+unit = NodePath("../..")
+game_state = ExtResource("9_u12un")
+
+[node name="death" type="Node" parent="fsm"]
+script = ExtResource("10_nquqd")
+game_state = ExtResource("9_u12un")
+
+[node name="search_enemy" type="Node" parent="fsm" node_paths=PackedStringArray("unit")]
+script = ExtResource("12_klm2a")
+unit = NodePath("../..")
+game_state = ExtResource("9_u12un")
+
+[node name="bench" type="Node" parent="fsm"]
+
+[node name="attackRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 256
+
+[node name="attackRangeCollision" type="CollisionShape2D" parent="attackRange"]
+unique_name_in_owner = true
+position = Vector2(53.3333, 40)
+shape = SubResource("CircleShape2D_r8gdk")
+
+[node name="detectEnemyRange" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 512
+
+[node name="detectEnemyRangeCollision" type="CollisionShape2D" parent="detectEnemyRange"]
+unique_name_in_owner = true
+position = Vector2(53.3333, 40)
+shape = SubResource("CircleShape2D_7wmqe")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="attackRange" to="fsm/search_enemy" method="_on_attack_range_area_entered"]
+[connection signal="area_entered" from="detectEnemyRange" to="fsm/search_enemy" method="_on_detect_enemy_range_area_entered"]
+[connection signal="area_exited" from="detectEnemyRange" to="fsm/search_enemy" method="_on_detect_enemy_range_area_exited"]

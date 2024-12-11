@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://bdpyftok8ce1h"]
+
+[ext_resource type="Script" path="res://data/unit_data/unit_stats_data/unit_stats/unit_stats.gd" id="1_1mhqd"]
+
+[resource]
+script = ExtResource("1_1mhqd")
+name = "Super Dan"
+rarity = 2
+gold_cost = 3
+tier = 1
+health_points = 100
+mana_start = 20
+mana_gain = 10
+attack_dmg = 30
+attack_speed = 0.2
+attack_range = 500
+pool_count = 15
+move_speed = 0.2
+skin_coordinates = Vector2i(4, 1)

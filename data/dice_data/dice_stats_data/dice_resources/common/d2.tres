@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=4 format=3 uid="uid://blhksmegc26jk"]
+
+[ext_resource type="Script" path="res://data/dice_data/dice_stats_data/dice_stats/dice_stats.gd" id="1_eaouw"]
+[ext_resource type="Script" path="res://data/trait_data/trait/trait.gd" id="2_55blc"]
+[ext_resource type="Resource" uid="uid://req53l77kqg3" path="res://data/trait_data/trait_resources/dice_trait/duo.tres" id="3_tadtx"]
+
+[resource]
+script = ExtResource("1_eaouw")
+name = "D2"
+rarity = 0
+gold_cost = 1
+traits = Array[ExtResource("2_55blc")]([ExtResource("3_tadtx")])
+pool_count = 30
+skin_coordinates = Vector2i(1, 0)

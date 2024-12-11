@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=4 format=3 uid="uid://chrxxfrpoe27k"]
+
+[ext_resource type="Script" path="res://data/dice_data/dice_stats_data/dice_stats/dice_stats.gd" id="1_ks53g"]
+[ext_resource type="Script" path="res://data/trait_data/trait/trait.gd" id="2_icp5x"]
+[ext_resource type="Resource" uid="uid://v1u762upimbt" path="res://data/trait_data/trait_resources/type_traits/void.tres" id="3_qdp0t"]
+
+[resource]
+script = ExtResource("1_ks53g")
+name = "Void D4"
+rarity = 3
+gold_cost = 4
+traits = Array[ExtResource("2_icp5x")]([ExtResource("3_qdp0t")])
+pool_count = 5
+skin_coordinates = Vector2i(3, 5)

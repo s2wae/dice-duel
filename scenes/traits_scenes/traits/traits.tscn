@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bequiptcec7eg"]
+
+[ext_resource type="Script" path="res://scenes/traits_scenes/traits/traits.gd" id="1_ox50m"]
+[ext_resource type="Resource" uid="uid://co1onuocg62h4" path="res://data/game_state_data/game_state_resources/game_state.tres" id="2_207q6"]
+[ext_resource type="PackedScene" uid="uid://d1hndgfvv8vs2" path="res://scenes/traits_scenes/trait_ui/trait_ui.tscn" id="2_u2xbm"]
+
+[node name="traits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_ox50m")
+game_state = ExtResource("2_207q6")
+
+[node name="traitContainer" type="GridContainer" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_right = 156.0
+offset_bottom = 176.0
+columns = 2
+
+[node name="traitUI" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2
+
+[node name="traitUI2" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2
+
+[node name="traitUI3" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2
+
+[node name="traitUI4" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2
+
+[node name="traitUI5" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2
+
+[node name="traitUI6" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2
+
+[node name="traitUI7" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2
+
+[node name="traitUI8" parent="traitContainer" instance=ExtResource("2_u2xbm")]
+layout_mode = 2

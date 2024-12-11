@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=6 format=3 uid="uid://duavcnajrksmb"]
+
+[ext_resource type="Script" path="res://data/dice_data/dice_stats_data/dice_stats/dice_stats.gd" id="1_dfqc8"]
+[ext_resource type="Script" path="res://data/trait_data/trait/trait.gd" id="2_mo6co"]
+[ext_resource type="Resource" uid="uid://cxoccmxs4cw48" path="res://data/trait_data/trait_resources/type_traits/chill.tres" id="3_xubbj"]
+[ext_resource type="Resource" uid="uid://bcxov4m03of58" path="res://data/trait_data/trait_resources/dice_trait/selfish.tres" id="4_p5ncd"]
+[ext_resource type="Resource" uid="uid://i3nkn14derlf" path="res://data/trait_data/trait_resources/dice_trait/evens.tres" id="5_qxlub"]
+
+[resource]
+script = ExtResource("1_dfqc8")
+name = "D1"
+rarity = 0
+gold_cost = 1
+traits = Array[ExtResource("2_mo6co")]([ExtResource("3_xubbj"), ExtResource("4_p5ncd"), ExtResource("5_qxlub")])
+pool_count = 30
+skin_coordinates = Vector2i(0, 0)

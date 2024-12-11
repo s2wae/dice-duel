@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=3 uid="uid://dpuyx4aipfinp"]
+
+[ext_resource type="Script" path="res://scenes/pause_menu_scenes/pause_menu.gd" id="1_04l27"]
+[ext_resource type="Texture2D" uid="uid://0eyl3j72aoae" path="res://assets/map/backgrounds/main_menu_bg.png" id="2_iiweh"]
+[ext_resource type="FontFile" uid="uid://doma2nwpphsme" path="res://assets/fonts/monogram.ttf" id="3_lp3uw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8q0qa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpoev"]
+bg_color = Color(0.392157, 0.0901961, 0, 1)
+border_color = Color(1, 0.752465, 0.303538, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8y7u"]
+bg_color = Color(0.390754, 0.0899249, 7.21961e-08, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7iiyl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfqe1"]
+bg_color = Color(0.486275, 0.2, 0.141176, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.990859, 0.764199, 3.85046e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_123tr"]
+bg_color = Color(0.484538, 0.198229, 0.140013, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8fxr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykmdi"]
+bg_color = Color(0.32549, 0.0588235, 0.0784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.992157, 0.764706, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qijh"]
+bg_color = Color(0.324542, 0.0595697, 0.0802073, 1)
+
+[node name="pauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_04l27")
+
+[node name="background" type="CanvasGroup" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="background"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_iiweh")
+
+[node name="returnButton" type="Button" parent="."]
+texture_filter = 1
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 76.0
+offset_bottom = 53.0
+scale = Vector2(2.84921, 2.51764)
+theme_override_fonts/font = ExtResource("3_lp3uw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8q0qa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bpoev")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8y7u")
+text = "RETURN"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -116.0
+offset_right = 260.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="settingsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_lp3uw")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7iiyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sfqe1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_123tr")
+text = "SETTINGS"
+
+[node name="quitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_lp3uw")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f8fxr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ykmdi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4qijh")
+text = "QUIT"
+
+[connection signal="pressed" from="returnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/settingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_on_quit_button_pressed"]

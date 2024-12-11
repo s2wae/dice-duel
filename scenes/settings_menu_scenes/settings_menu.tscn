@@ -1,0 +1,137 @@
+[gd_scene load_steps=14 format=3 uid="uid://b3pdtb1bduwdc"]
+
+[ext_resource type="Script" path="res://scenes/settings_menu_scenes/settings_menu.gd" id="1_ua6vl"]
+[ext_resource type="Texture2D" uid="uid://0eyl3j72aoae" path="res://assets/map/backgrounds/main_menu_bg.png" id="1_vvlm6"]
+[ext_resource type="FontFile" uid="uid://doma2nwpphsme" path="res://assets/fonts/monogram.ttf" id="3_ly0tk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1hw75"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcydc"]
+bg_color = Color(0.392157, 0.0901961, 0, 1)
+border_color = Color(1, 0.752465, 0.303538, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_056un"]
+bg_color = Color(0.390754, 0.0899249, 7.21961e-08, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4jmx3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2w2r"]
+bg_color = Color(0.341176, 0.701961, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.952941, 0.784314, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdx2i"]
+bg_color = Color(0.341176, 0.701961, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.952597, 0.783991, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_widra"]
+bg_color = Color(0.341176, 0.701961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i77kw"]
+bg_color = Color(0.339225, 0.702885, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6c86n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wuhb"]
+bg_color = Color(0.633207, 0.500184, 0.20993, 1)
+
+[node name="settingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ua6vl")
+
+[node name="background" type="CanvasGroup" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="background"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_vvlm6")
+
+[node name="returnButton" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 76.0
+offset_bottom = 53.0
+scale = Vector2(2.84921, 2.51764)
+theme_override_fonts/font = ExtResource("3_ly0tk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1hw75")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qcydc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_056un")
+text = "RETURN"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 112.0
+offset_right = 1056.0
+offset_bottom = 560.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 208.0
+offset_top = 160.0
+offset_right = 292.0
+offset_bottom = 200.0
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 355
+
+[node name="fullscreenLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ly0tk")
+theme_override_font_sizes/font_size = 64
+text = "FULLSCREEN"
+
+[node name="fullscreenButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ly0tk")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4jmx3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_d2w2r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pdx2i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_widra")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i77kw")
+toggle_mode = true
+button_pressed = true
+text = "ON"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="resolutionLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ly0tk")
+theme_override_font_sizes/font_size = 64
+text = "RESOLUTION(Windowed)"
+
+[node name="resolutionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ly0tk")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6c86n")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7wuhb")
+
+[connection signal="pressed" from="returnButton" to="." method="_on_return_button_pressed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/fullscreenButton" to="." method="_on_fullscreen_button_toggled"]

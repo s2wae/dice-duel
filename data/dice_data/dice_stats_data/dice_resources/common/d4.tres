@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=4 format=3 uid="uid://dlyk4wa34pbpl"]
+
+[ext_resource type="Script" path="res://data/dice_data/dice_stats_data/dice_stats/dice_stats.gd" id="1_w1dmx"]
+[ext_resource type="Script" path="res://data/trait_data/trait/trait.gd" id="2_kst6x"]
+[ext_resource type="Resource" uid="uid://i3nkn14derlf" path="res://data/trait_data/trait_resources/dice_trait/evens.tres" id="3_vbc5p"]
+
+[resource]
+script = ExtResource("1_w1dmx")
+name = "D4"
+rarity = 0
+gold_cost = 1
+traits = Array[ExtResource("2_kst6x")]([ExtResource("3_vbc5p")])
+pool_count = 30
+skin_coordinates = Vector2i(3, 0)

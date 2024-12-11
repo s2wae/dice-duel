@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=2 format=3 uid="uid://csxcco051ux5m"]
+
+[ext_resource type="Script" path="res://data/dice_data/dice_stats_data/dice_stats/dice_stats.gd" id="1_d3eka"]
+
+[resource]
+script = ExtResource("1_d3eka")
+name = "Heavy D4"
+rarity = 1
+gold_cost = 1
+pool_count = 15
+skin_coordinates = Vector2i(3, 1)

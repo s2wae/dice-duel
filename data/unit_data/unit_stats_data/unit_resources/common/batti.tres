@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitStats" load_steps=2 format=3 uid="uid://yberwhcy0nvx"]
+
+[ext_resource type="Script" path="res://data/unit_data/unit_stats_data/unit_stats/unit_stats.gd" id="1_4mlmf"]
+
+[resource]
+script = ExtResource("1_4mlmf")
+name = "Batti"
+rarity = 0
+gold_cost = 1
+tier = 1
+health_points = 100
+mana_start = 20
+mana_gain = 10
+attack_dmg = 10
+attack_speed = 0.3
+attack_range = 200
+pool_count = 30
+move_speed = 0.2
+skin_coordinates = Vector2i(0, 1)

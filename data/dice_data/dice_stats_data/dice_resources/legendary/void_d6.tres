@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=4 format=3 uid="uid://bf0plmsqxki7j"]
+
+[ext_resource type="Script" path="res://data/dice_data/dice_stats_data/dice_stats/dice_stats.gd" id="1_l3wdp"]
+[ext_resource type="Script" path="res://data/trait_data/trait/trait.gd" id="2_acpcq"]
+[ext_resource type="Resource" uid="uid://v1u762upimbt" path="res://data/trait_data/trait_resources/type_traits/void.tres" id="3_61px4"]
+
+[resource]
+script = ExtResource("1_l3wdp")
+name = "Void D6"
+rarity = 3
+gold_cost = 4
+traits = Array[ExtResource("2_acpcq")]([ExtResource("3_61px4")])
+pool_count = 5
+skin_coordinates = Vector2i(5, 5)

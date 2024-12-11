@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bo66yqgasq5cn"]
+
+[ext_resource type="Texture2D" uid="uid://u753kqihtxla" path="res://assets/traits/trait_bg.png" id="1_7ssgg"]
+[ext_resource type="Script" path="res://scenes/traits_scenes/trait_sprite/trait_sprite.gd" id="1_ndhl6"]
+[ext_resource type="Resource" uid="uid://cxoccmxs4cw48" path="res://data/trait_data/trait_resources/type_traits/chill.tres" id="3_q7bgx"]
+[ext_resource type="Texture2D" uid="uid://cuqvi8ycym3db" path="res://assets/dice/six sided die.png" id="4_6ionj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvsfv"]
+atlas = ExtResource("4_6ionj")
+region = Rect2(0, 192, 16, 16)
+
+[node name="traitSprite" type="TextureRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = -1
+anchor_right = 0.028
+anchor_bottom = 0.049
+offset_right = -0.256001
+offset_bottom = 0.248001
+mouse_filter = 2
+texture = ExtResource("1_7ssgg")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("1_ndhl6")
+trait_data = ExtResource("3_q7bgx")
+
+[node name="sprite" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.125
+anchor_right = 0.875
+anchor_bottom = 0.875
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_xvsfv")
+expand_mode = 1
+stretch_mode = 5

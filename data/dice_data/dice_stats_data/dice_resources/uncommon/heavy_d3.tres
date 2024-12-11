@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=4 format=3 uid="uid://da8q5bcg1dtpy"]
+
+[ext_resource type="Script" path="res://data/dice_data/dice_stats_data/dice_stats/dice_stats.gd" id="1_d8v6g"]
+[ext_resource type="Script" path="res://data/trait_data/trait/trait.gd" id="2_wakop"]
+[ext_resource type="Resource" uid="uid://bylm66fs53ih3" path="res://data/trait_data/trait_resources/dice_trait/3-stack.tres" id="3_lxdev"]
+
+[resource]
+script = ExtResource("1_d8v6g")
+name = "Heavy D3"
+rarity = 1
+gold_cost = 1
+traits = Array[ExtResource("2_wakop")]([ExtResource("3_lxdev")])
+pool_count = 15
+skin_coordinates = Vector2i(2, 1)

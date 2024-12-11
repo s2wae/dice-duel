@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DiceStats" load_steps=4 format=3 uid="uid://ct6y0j8jxy2yh"]
+
+[ext_resource type="Script" path="res://data/dice_data/dice_stats_data/dice_stats/dice_stats.gd" id="1_dkr2w"]
+[ext_resource type="Script" path="res://data/trait_data/trait/trait.gd" id="2_4gil7"]
+[ext_resource type="Resource" uid="uid://bcxov4m03of58" path="res://data/trait_data/trait_resources/dice_trait/selfish.tres" id="3_4eyil"]
+
+[resource]
+script = ExtResource("1_dkr2w")
+name = "D6"
+rarity = 0
+gold_cost = 1
+traits = Array[ExtResource("2_4gil7")]([ExtResource("3_4eyil")])
+pool_count = 30
+skin_coordinates = Vector2i(5, 0)

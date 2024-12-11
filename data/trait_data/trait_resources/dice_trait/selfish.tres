@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Trait" load_steps=4 format=3 uid="uid://bcxov4m03of58"]
+
+[ext_resource type="Texture2D" uid="uid://n65dwepww50e" path="res://assets/cursor/tilemap_packed.png" id="1_v8wmq"]
+[ext_resource type="Script" path="res://data/trait_data/trait/trait.gd" id="2_udmxc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5l4n"]
+atlas = ExtResource("1_v8wmq")
+region = Rect2(272, 96, 16, 16)
+
+[resource]
+script = ExtResource("2_udmxc")
+name = "Selfish"
+icon = SubResource("AtlasTexture_u5l4n")
+description = ""
+levels = 1
+dice_requirements = Array[int]([1])
+dice_modifiers = Array[PackedScene]([])

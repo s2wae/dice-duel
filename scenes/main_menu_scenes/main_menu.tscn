@@ -1,0 +1,186 @@
+[gd_scene load_steps=16 format=3 uid="uid://dft17lgtfeyuf"]
+
+[ext_resource type="Script" path="res://scenes/main_menu_scenes/main_menu.gd" id="1_8bkdl"]
+[ext_resource type="FontFile" uid="uid://doma2nwpphsme" path="res://assets/fonts/monogram.ttf" id="2_tqq8y"]
+[ext_resource type="Texture2D" uid="uid://0eyl3j72aoae" path="res://assets/map/backgrounds/main_menu_bg.png" id="3_uxad2"]
+[ext_resource type="Texture2D" uid="uid://cttbu241m0745" path="res://assets/dice/d1Pic1.png" id="4_dks8o"]
+[ext_resource type="Texture2D" uid="uid://c70udr5bamfft" path="res://assets/dice/angled1Pic.png" id="5_gpv2u"]
+[ext_resource type="PackedScene" uid="uid://b3pdtb1bduwdc" path="res://scenes/settings_menu_scenes/settings_menu.tscn" id="6_g265k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4p3qp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k601l"]
+bg_color = Color(0.596078, 0.14902, 0.14902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.953921, 0.767609, 0.207955, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8u73"]
+bg_color = Color(0.595375, 0.150604, 0.147195, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ecbdu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpni1"]
+bg_color = Color(0.407843, 0.0901961, 0.0901961, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.952941, 0.768627, 0.207843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkihd"]
+bg_color = Color(0.407966, 0.0888629, 0.0892181, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sosm5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24qu6"]
+bg_color = Color(0.270588, 0.0470588, 0.0470588, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.952941, 0.768627, 0.207843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4lv2"]
+bg_color = Color(0.270368, 0.0461028, 0.0463533, 1)
+
+[node name="mainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8bkdl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.375
+anchor_top = 0.617
+anchor_right = 0.625
+anchor_bottom = 0.818
+offset_left = -3.05176e-05
+offset_top = 0.18396
+offset_bottom = -0.0640259
+
+[node name="startButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tqq8y")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4p3qp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k601l")
+theme_override_styles/normal = SubResource("StyleBoxFlat_y8u73")
+text = "START!"
+
+[node name="settingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tqq8y")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ecbdu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hpni1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lkihd")
+text = "SETTINGS"
+
+[node name="quitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_tqq8y")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_sosm5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_24qu6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_b4lv2")
+text = "QUIT"
+
+[node name="nameLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 224.0
+offset_top = 224.0
+offset_right = 604.0
+offset_bottom = 304.0
+scale = Vector2(2.07, 2.07)
+theme_override_colors/font_color = Color(0.937255, 0, 0.364706, 1)
+theme_override_fonts/font = ExtResource("2_tqq8y")
+theme_override_font_sizes/font_size = 100
+text = "DICE DUEL!"
+
+[node name="visuals" type="CanvasLayer" parent="."]
+layer = -6
+
+[node name="bg" type="TextureRect" parent="visuals"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_uxad2")
+
+[node name="CanvasGroup2" type="CanvasGroup" parent="visuals"]
+modulate = Color(1, 1, 1, 0.647059)
+
+[node name="MainMenuBg6" type="Sprite2D" parent="visuals/CanvasGroup2"]
+texture_filter = 1
+position = Vector2(720, 688)
+rotation = -1.47781
+scale = Vector2(10.37, 10.37)
+texture = ExtResource("4_dks8o")
+
+[node name="MainMenuBg7" type="Sprite2D" parent="visuals/CanvasGroup2"]
+texture_filter = 1
+position = Vector2(640, 64)
+rotation = -1.41632
+scale = Vector2(9.6, 9.6)
+texture = ExtResource("5_gpv2u")
+
+[node name="MainMenuBg8" type="Sprite2D" parent="visuals/CanvasGroup2"]
+texture_filter = 1
+position = Vector2(512, 512)
+rotation = -2.24188
+scale = Vector2(10.215, 10.215)
+texture = ExtResource("5_gpv2u")
+
+[node name="MainMenuBg9" type="Sprite2D" parent="visuals/CanvasGroup2"]
+texture_filter = 1
+position = Vector2(112, 224)
+rotation = -2.61478
+scale = Vector2(5.745, 5.745)
+texture = ExtResource("4_dks8o")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="visuals"]
+modulate = Color(1, 1, 1, 0.952941)
+
+[node name="MainMenuBg2" type="Sprite2D" parent="visuals/CanvasGroup"]
+texture_filter = 1
+position = Vector2(864, 224)
+rotation = -0.170416
+scale = Vector2(14.345, 14.345)
+texture = ExtResource("4_dks8o")
+
+[node name="MainMenuBg3" type="Sprite2D" parent="visuals/CanvasGroup"]
+texture_filter = 1
+position = Vector2(352, 144)
+rotation = -0.108935
+scale = Vector2(15.345, 16.21)
+texture = ExtResource("5_gpv2u")
+
+[node name="MainMenuBg4" type="Sprite2D" parent="visuals/CanvasGroup"]
+texture_filter = 1
+position = Vector2(960, 544)
+rotation = -0.934494
+scale = Vector2(14.365, 15.174)
+texture = ExtResource("5_gpv2u")
+
+[node name="MainMenuBg5" type="Sprite2D" parent="visuals/CanvasGroup"]
+texture_filter = 1
+position = Vector2(240, 496)
+rotation = -1.30739
+scale = Vector2(17.605, 17.605)
+texture = ExtResource("4_dks8o")
+
+[node name="settingsMenu" parent="." instance=ExtResource("6_g265k")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/settingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_on_quit_button_pressed"]
