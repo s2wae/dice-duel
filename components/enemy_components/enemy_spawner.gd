@@ -8,14 +8,7 @@ const ENEMY = preload("res://scenes/enemy_scenes/enemy.tscn")
 
 @export var enemy_board: EnemyPlayArea
 
-func _ready() -> void:
-	var john := preload("res://data/enemy_data/enemy_stats_data/enemy_resources/evil_john.tres")
-	var evil := preload("res://data/enemy_data/enemy_stats_data/enemy_resources/evil_bones.tres")
-	var tween := create_tween()
-	
-	for i in 1:
-		tween.tween_callback(spawn_enemy.bind(john))
-		tween.tween_interval(0.5)
+
 
 func _get_first_available_area() -> EnemyPlayArea:
 	if not enemy_board.enemy_grid.is_grid_full():

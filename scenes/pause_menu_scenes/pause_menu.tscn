@@ -57,6 +57,7 @@ texture = ExtResource("2_iiweh")
 
 [node name="returnButton" type="Button" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 76.0

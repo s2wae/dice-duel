@@ -25,10 +25,12 @@ func _ready():
 func _process(delta):
 	if current_state:
 		current_state.update(delta)
+		
+		# Using this to check state of current enemy
 	#if parent_node.is_in_group("enemy"):
 		#print(current_state)
-	if parent_node.is_in_group("units"):
-		print(current_state)
+	#if parent_node.is_in_group("units"):
+		#print(current_state)
 
 
 

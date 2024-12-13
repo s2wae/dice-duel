@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://components/enemy_components/enemy_grid.gd" id="10_viyll"]
 [ext_resource type="Script" path="res://components/dice_components/dice_spawner.gd" id="11_oqokq"]
 [ext_resource type="Script" path="res://components/unit_components/unit_combiner.gd" id="12_23efj"]
-[ext_resource type="Script" path="res://data/game_manager_data/game_manager/game_manager.gd" id="12_hicfy"]
+[ext_resource type="Script" path="res://autoloads/game_manager.gd" id="12_hicfy"]
 [ext_resource type="Script" path="res://components/dice_components/dice_mover.gd" id="12_jn3fs"]
 [ext_resource type="Script" path="res://components/enemy_components/enemy_spawner.gd" id="12_t0t2d"]
 [ext_resource type="PackedScene" uid="uid://es150vlqrmvf" path="res://scenes/shop_scenes/shop/shop.tscn" id="14_a1fwo"]
@@ -6562,11 +6562,13 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAHAAMAAAABAAUAAAAJAAEAAQAMAAAAAAAJAAIAAQAMAAEAAAAOAAEAAQANAAAAAAAOAAIAAQANAAEAAAAPAAcAAAABAAUAABA=")
 tile_set = SubResource("TileSet_do35w")
 
-[node name="gameManager" type="Node" parent="." node_paths=PackedStringArray("unit_board", "enemy_board")]
+[node name="gameManager" type="Node" parent="." node_paths=PackedStringArray("player_board", "enemy_board", "enemy_spawner")]
 script = ExtResource("12_hicfy")
-unit_board = NodePath("../board/boardUnitGrid")
+player_board = NodePath("../board/boardUnitGrid")
 enemy_board = NodePath("../enemyBoard/enemyBoardUnitGrid")
 game_state = ExtResource("23_142nn")
+enemy_spawner = NodePath("../enemySpawner")
+player_stats = ExtResource("20_rpgwg")
 
 [node name="enemySpawner" type="Node" parent="." node_paths=PackedStringArray("enemy_board")]
 script = ExtResource("12_t0t2d")
@@ -6644,17 +6646,6 @@ player_stats = ExtResource("20_rpgwg")
 game_state = ExtResource("23_142nn")
 board = NodePath("../../board/boardUnitGrid")
 
-[node name="pauseMenu" parent="UI" node_paths=PackedStringArray("settings_menu") instance=ExtResource("26_t5b3l")]
-unique_name_in_owner = true
-visible = false
-scale = Vector2(0.335, 0.335)
-settings_menu = NodePath("../settingsMenu")
-
-[node name="settingsMenu" parent="UI" instance=ExtResource("27_m50un")]
-unique_name_in_owner = true
-visible = false
-scale = Vector2(0.335, 0.335)
-
 [node name="wave_counter" type="Label" parent="UI"]
 unique_name_in_owner = true
 texture_filter = 1
@@ -6674,3 +6665,14 @@ offset_right = 66.0
 offset_bottom = 157.0
 theme_override_fonts/font = ExtResource("30_4cclo")
 text = "Life : 3"
+
+[node name="pauseMenu" parent="UI" node_paths=PackedStringArray("settings_menu") instance=ExtResource("26_t5b3l")]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(0.335, 0.335)
+settings_menu = NodePath("../settingsMenu")
+
+[node name="settingsMenu" parent="UI" instance=ExtResource("27_m50un")]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(0.335, 0.335)

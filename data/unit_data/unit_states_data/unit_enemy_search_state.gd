@@ -41,7 +41,7 @@ func _on_attack_range_area_entered(area: Area2D) -> void:
 func _process(delta: float) -> void:
 	if unit.health_bar.value <= 0:
 		state_transition.emit(self, "death")
-	if can_chase:
+	if can_chase and current_target != null:
 		var direction = current_target.global_position - unit.global_position
 		unit.position += direction.normalized() * unit.stats.move_speed
 		if direction.x < 0: 
