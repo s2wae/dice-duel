@@ -62,6 +62,6 @@ func _on_attack_timer_timeout() -> void:
 
 func _on_game_state_changed() -> void:
 	if game_state.current_phase == GameState.Phase.PLANNING:
-		state_transition.emit(self, "idle")
 		can_attack = false
 		attack_timer.stop()
+		state_transition.emit(self, "idle")

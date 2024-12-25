@@ -12,7 +12,7 @@ func _ready() -> void:
 func enter():
 	unit.is_alive = false
 	unit.hide()
-	unit.PROCESS_MODE_DISABLED
+
 
 
 func exit():
@@ -20,7 +20,7 @@ func exit():
 	unit.health_bar.value = unit.stats.health_points
 	unit.mana_bar.value = unit.stats.mana_start
 	unit.show()
-	unit.PROCESS_MODE_ALWAYS
+
 
 
 

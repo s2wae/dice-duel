@@ -9,6 +9,8 @@ signal board_check
 @export var game_state : GameState
 @export var enemy_spawner : EnemySpawner
 @export var player_stats : PlayerStats
+@export var team_size_ui : TeamSizeUI
+@export var fight_button : FightButton
 
 @onready var wave_count : int = 1
 @onready var life_count : int = 3
@@ -21,7 +23,6 @@ var player_board_pos : Array = []
 var john := preload("res://data/enemy_data/enemy_stats_data/enemy_resources/evil_john.tres")
 var evil := preload("res://data/enemy_data/enemy_stats_data/enemy_resources/evil_bones.tres")
 var evil_hand := preload("res://data/enemy_data/enemy_stats_data/enemy_resources/evil_hand.tres")
-
 
 
 
@@ -51,6 +52,9 @@ func spawn_wave() -> void:
 			for i in 1:
 				tween.tween_callback(enemy_spawner.spawn_enemy.bind(evil_hand))
 				tween.tween_interval(0.5)
+		6:
+			SceneManager.goto_scene("res://scenes/end_game_scenes/end_game.tscn")
+
 
 func _ready() -> void:
 	board_check.connect(_on_board_check)
@@ -64,9 +68,10 @@ func _on_game_state_changed() -> void:
 		enemy_board_array.clear()
 		player_board_array = player_board.get_all_units()
 		enemy_board_array = enemy_board.get_all_enemies()
-		for i in player_board_array:
-			player_board_pos.append(i.global_position)
 	else:
+		if not team_size_ui.warning_sprite.visible:
+			fight_button.disabled = false
+			fight_button.hbox_container.modulate.a = 1
 		wave_count += 1
 		wave_counter.text = "Wave : " + str(wave_count)
 		await get_tree().create_timer(0.5).timeout
@@ -93,22 +98,18 @@ func _on_board_check() -> void:
 		player_board_array = player_board.get_all_units()
 		life_count -= 1
 		life_counter.text = "Life : " + str(life_count)
-		if life_count <= 0:
-			await get_tree().create_timer(1).timeout
-			SceneManager.goto_scene("res://scenes/end_game_scenes/end_game.tscn")
-		for i : Unit in player_board_array:
-			i.global_position = player_board_pos[temp_count]			
-			temp_count += 1
-			await get_tree().create_timer(0.2).timeout
 		for i : Enemy in enemy_board_array:
 			i.queue_free()
+		if life_count <= 0:
+			await get_tree().create_timer(1).timeout
+			for i : Unit in player_board_array:
+				i.queue_free()
+			await get_tree().create_timer(0.2).timeout
+			SceneManager.goto_scene("res://scenes/end_game_scenes/end_game.tscn")
 	
 	if enemy_board_array.is_empty():
 		await get_tree().create_timer(0.5).timeout
-		game_state.current_phase = GameState.Phase.PLANNING
 		enemy_board_array = enemy_board.get_all_enemies()
-		for i : Unit in player_board_array:
-			i.global_position = player_board_pos[temp_count]
-			temp_count += 1
 		for i : Enemy in enemy_board_array:
 			i.queue_free()
+		game_state.current_phase = GameState.Phase.PLANNING

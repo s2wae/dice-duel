@@ -15,13 +15,16 @@ signal quick_sell_pressed
 @onready var drag_and_drop: DragAndDrop = $dragAndDrop
 @onready var animations: UnitAnimations = $unitAnimations
 @onready var attack_range_collision : CollisionShape2D = %attackRangeCollision
+@onready var detect_enemy_range : Area2D = %detectEnemyRange
 @onready var is_alive : bool = true
+@onready var benched : bool = true
 
 
 var is_hovered : bool = false
 
 
 func _ready() -> void:
+	game_state.changed.connect(_on_game_state_changed)
 	if not Engine.is_editor_hint():
 		drag_and_drop.drag_canceled.connect(_on_drag_canceled)
 
@@ -76,3 +79,12 @@ func _on_mouse_exited() -> void:
 	
 	is_hovered = false
 	z_index = 0
+
+
+func _on_game_state_changed() -> void:
+	if benched:
+		detect_enemy_range.monitoring = false
+		detect_enemy_range.monitorable = false
+	else:
+		detect_enemy_range.monitoring = true
+		detect_enemy_range.monitorable = true

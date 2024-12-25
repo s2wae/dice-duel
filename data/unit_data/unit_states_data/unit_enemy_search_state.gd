@@ -14,6 +14,7 @@ extends State
 
 
 func enter() -> void:
+	game_state.changed.connect(_on_game_state_changed)
 	await get_tree().create_timer(0.1).timeout
 	if !detect_enemy_range.has_overlapping_areas():
 		can_chase = false
@@ -48,3 +49,10 @@ func _process(delta: float) -> void:
 			unit.skin.flip_h = true
 		else:
 			unit.skin.flip_h = false
+
+
+func _on_game_state_changed() -> void:
+	if game_state.current_phase == GameState.Phase.PLANNING:
+		unit.health_bar.value = unit.stats.health_points
+		unit.mana_bar.value = unit.stats.mana_start
+		state_transition.emit(self, "idle")

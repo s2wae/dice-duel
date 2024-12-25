@@ -4,6 +4,7 @@ extends Area2D
 
 
 @export var stats: UnitStats : set = set_stats
+@export var game_state : GameState
 
 @onready var skin : Sprite2D = $skin
 @onready var health_bar: ProgressBar = $hpBar
@@ -12,6 +13,7 @@ extends Area2D
 @onready var animations : UnitAnimations = $unitAnimations
 @onready var attack_range_collision : CollisionShape2D = %attackRangeCollision
 @onready var is_alive : bool = true
+@onready var detect_unit_range : Area2D = %detectUnitRange
 
 var is_hovered := false
 

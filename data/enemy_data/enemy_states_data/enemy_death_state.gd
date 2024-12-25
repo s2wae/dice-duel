@@ -9,6 +9,7 @@ func _ready() -> void:
 	game_state.changed.connect(_on_game_state_changed)
 
 func enter():
+	Global.score += 100
 	enemy.is_alive = false
 	enemy.hide()
 	enemy.PROCESS_MODE_DISABLED

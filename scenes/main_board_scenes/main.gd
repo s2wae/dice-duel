@@ -28,7 +28,6 @@ var enemy_board_array : Array = []
 var player_board_array : Array = []
 var player_board_pos : Array = []
 
-
 func _ready() -> void:
 	
 	unit_spawner.unit_spawned.connect(sell_area.setup_unit)

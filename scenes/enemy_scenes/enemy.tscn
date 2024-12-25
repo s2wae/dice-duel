@@ -40,7 +40,7 @@ radius = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kf0hl"]
 resource_local_to_scene = true
-radius = 700.0
+radius = 620.895
 
 [node name="enemy" type="Area2D" groups=["enemy"]]
 position = Vector2(0, -3)
@@ -48,6 +48,7 @@ scale = Vector2(0.15, 0.15)
 collision_layer = 769
 script = ExtResource("1_l0slu")
 stats = ExtResource("2_ewfjo")
+game_state = ExtResource("9_dncw2")
 
 [node name="skin" type="Sprite2D" parent="."]
 unique_name_in_owner = true

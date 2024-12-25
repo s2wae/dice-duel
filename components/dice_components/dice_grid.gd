@@ -5,10 +5,13 @@ signal dice_grid_changed
 
 
 @export var size: Vector2i
+@export var game_state : GameState
+
 var die: Dictionary
 
 
 func _ready() -> void:
+	game_state.changed.connect(_on_game_state_changed)
 	for i in size.x:
 		for j in size.y:
 			die[Vector2i(i, j)] = null
@@ -60,3 +63,10 @@ func _on_dice_tree_exited(dice: Dice, tile: Vector2i) -> void:
 	if dice.is_queued_for_deletion():
 		die[tile] = null
 		dice_grid_changed.emit()
+
+
+func _on_game_state_changed() -> void:
+	if game_state.current_phase == GameState.Phase.PLANNING:
+		for tile in die:
+			if is_tile_occupied(tile):
+				remove_dice(tile)
